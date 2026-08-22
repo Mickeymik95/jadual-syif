@@ -1,69 +1,541 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+
+import Header from "../components/Header";
+import Calendar from "../components/Calendar";
+import OtModal from "../components/OtModal";
+
+import { getShiftData } from "../data/shifts";
+
+const STORAGE_KEY = "jadual-syif-data-v1";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+  // =========================================
+  // SYIF
+  // =========================================
+
+  const [shifts, setShifts] = useState({});
+
+  // =========================================
+  // OT SAMBUNG
+  // =========================================
+
+  const [otSambung, setOtSambung] = useState({});
+
+  // =========================================
+  // MODAL
+  // =========================================
+
+  const [selectedDay, setSelectedDay] = useState(null);
+
+  const [otType, setOtType] = useState("");
+
+  const [otHours, setOtHours] = useState("");
+
+  // =========================================
+  // STATUS LOCAL STORAGE
+  // =========================================
+
+  const [loaded, setLoaded] = useState(false);
+
+
+  // =========================================
+  // LOAD DATA
+  // =========================================
+
+  useEffect(() => {
+
+    try {
+
+      const saved =
+        localStorage.getItem(STORAGE_KEY);
+
+      if (saved) {
+
+        const parsed = JSON.parse(saved);
+
+        if (parsed.shifts) {
+          setShifts(parsed.shifts);
+        }
+
+        if (parsed.otSambung) {
+          setOtSambung(parsed.otSambung);
+        }
+
+      }
+
+    } catch (error) {
+
+      console.error(
+        "Gagal membaca data:",
+        error
+      );
+
+    }
+
+    setLoaded(true);
+
+  }, []);
+
+
+  // =========================================
+  // SAVE DATA
+  // =========================================
+
+  useEffect(() => {
+
+    if (!loaded) return;
+
+    try {
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          shifts,
+          otSambung,
+        })
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Gagal menyimpan data:",
+        error
+      );
+
+    }
+
+  }, [
+    shifts,
+    otSambung,
+    loaded,
+  ]);
+
+
+  // =========================================
+  // TARIKH SEMASA
+  // =========================================
+
+  const [currentDate] = useState(
+    () => new Date()
   );
+
+
+  // =========================================
+  // JUMLAH HARI BULAN
+  // =========================================
+
+  const daysInMonth = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth() + 1,
+    0
+  ).getDate();
+
+
+  // =========================================
+  // SENARAI HARI
+  // =========================================
+
+  const days = useMemo(() => {
+
+    return Array.from(
+      {
+        length: daysInMonth,
+      },
+      (_, index) => {
+
+        const day = index + 1;
+
+        const date = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          day
+        );
+
+        return {
+
+          day,
+
+          weekday:
+            date.toLocaleDateString(
+              "ms-MY",
+              {
+                weekday: "long",
+              }
+            ),
+
+        };
+
+      }
+    );
+
+  }, [
+    currentDate,
+    daysInMonth,
+  ]);
+
+
+  // =========================================
+  // KIRAAN
+  // =========================================
+
+  const summary = useMemo(() => {
+
+    let normalDays = 0;
+
+    let phDays = 0;
+
+    let otNormal = 0;
+
+    let otPh = 0;
+
+    let elaun = 0;
+
+
+    Object.entries(shifts).forEach(
+      ([day, shift]) => {
+
+        if (!shift) return;
+
+
+        const data =
+          getShiftData(shift);
+
+
+        // HARI NORMAL
+
+        if (data.type === "NORMAL") {
+          normalDays++;
+        }
+
+
+        // HARI PH
+
+        if (data.type === "PH") {
+          phDays++;
+        }
+
+
+        // ELAUN
+
+        elaun +=
+          Number(data.elaun) || 0;
+
+
+        // OT ASAS
+
+        const baseOt =
+          Number(data.ot) || 0;
+
+
+        if (data.type === "PH") {
+
+          otPh += baseOt;
+
+        } else {
+
+          otNormal += baseOt;
+
+        }
+
+
+        // OT SAMBUNG
+
+        const extra =
+          otSambung[day];
+
+
+        if (extra) {
+
+          const extraHours =
+            Number(extra.hours) || 0;
+
+          const extraType =
+            String(extra.type || "")
+              .trim()
+              .toUpperCase();
+
+
+          if (
+            extraType.includes("PH")
+          ) {
+
+            otPh += extraHours;
+
+          } else {
+
+            otNormal += extraHours;
+
+          }
+
+        }
+
+      }
+    );
+
+
+    return {
+
+      normalDays,
+
+      phDays,
+
+      otNormal:
+        Number(
+          otNormal.toFixed(1)
+        ),
+
+      otPh:
+        Number(
+          otPh.toFixed(1)
+        ),
+
+      elaun,
+
+    };
+
+  }, [
+    shifts,
+    otSambung,
+  ]);
+
+
+  // =========================================
+  // TUKAR SYIF
+  // =========================================
+
+  function handleShiftChange(
+    day,
+    value
+  ) {
+
+    setShifts((prev) => ({
+
+      ...prev,
+
+      [day]: value,
+
+    }));
+
+  }
+
+
+  // =========================================
+  // BUKA OT
+  // =========================================
+
+  function openOtModal(day) {
+
+    setSelectedDay(day);
+
+
+    const saved =
+      otSambung[day];
+
+
+    if (saved) {
+
+      setOtType(
+        saved.type ?? ""
+      );
+
+      setOtHours(
+        saved.hours !== undefined
+          ? String(saved.hours)
+          : ""
+      );
+
+    } else {
+
+      setOtType("");
+
+      setOtHours("");
+
+    }
+
+  }
+
+
+  // =========================================
+  // TUTUP OT
+  // =========================================
+
+  function closeOtModal() {
+
+    setSelectedDay(null);
+
+    setOtType("");
+
+    setOtHours("");
+
+  }
+
+
+  // =========================================
+  // SIMPAN OT
+  // =========================================
+
+  function saveOtSambung() {
+
+    if (
+      selectedDay === null ||
+      selectedDay === undefined
+    ) {
+      return;
+    }
+
+
+    const cleanType =
+      String(otType).trim();
+
+
+    if (!cleanType) {
+
+      alert(
+        "Sila masukkan jenis OT."
+      );
+
+      return;
+
+    }
+
+
+    const cleanHours =
+      String(otHours)
+        .trim()
+        .replace(",", ".");
+
+
+    const hours =
+      Number(cleanHours);
+
+
+    if (
+      cleanHours === "" ||
+      Number.isNaN(hours) ||
+      !Number.isFinite(hours)
+    ) {
+
+      alert(
+        "Sila masukkan jumlah jam yang sah."
+      );
+
+      return;
+
+    }
+
+
+    setOtSambung((prev) => ({
+
+      ...prev,
+
+      [selectedDay]: {
+
+        type: cleanType,
+
+        hours,
+
+      },
+
+    }));
+
+
+    closeOtModal();
+
+  }
+
+
+  // =========================================
+  // RESET SEMUA DATA
+  // =========================================
+
+  function resetAllData() {
+
+    const confirmReset =
+      window.confirm(
+        "RESET SEMUA DATA?\n\nSemua syif dan OT Sambung akan dipadam."
+      );
+
+
+    if (!confirmReset) {
+      return;
+    }
+
+
+    setShifts({});
+
+    setOtSambung({});
+
+    localStorage.removeItem(
+      STORAGE_KEY
+    );
+
+
+    alert(
+      "Semua data telah direset."
+    );
+
+  }
+
+
+  // =========================================
+  // HARI MODAL
+  // =========================================
+
+  const selectedWeekday =
+    selectedDay !== null
+      ? days.find(
+          (item) =>
+            item.day === selectedDay
+        )?.weekday || ""
+      : "";
+
+
+  // =========================================
+  // UI
+  // =========================================
+
+  return (
+
+    <main
+      className="
+        min-h-screen
+        bg-slate-950
+        text-white
+      "
+    >
+
+      <Header
+        summary={summary}
+        onReset={resetAllData}
+      />
+
+
+      <Calendar
+        currentDate={currentDate}
+        days={days}
+        shifts={shifts}
+        otSambung={otSambung}
+        onShiftChange={handleShiftChange}
+        onOpenOt={openOtModal}
+      />
+
+
+      <OtModal
+        selectedDay={selectedDay}
+        weekday={selectedWeekday}
+        otType={otType}
+        otHours={otHours}
+        onTypeChange={setOtType}
+        onHoursChange={setOtHours}
+        onClose={closeOtModal}
+        onSave={saveOtSambung}
+      />
+
+    </main>
+
+  );
+
 }
