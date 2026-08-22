@@ -1,6 +1,9 @@
 "use client";
 
-import { getShiftData, SHIFT_OPTIONS } from "../data/shifts";
+import {
+  getShiftData,
+  SHIFT_OPTIONS,
+} from "../data/shifts";
 
 export default function DayRow({
   day,
@@ -12,18 +15,49 @@ export default function DayRow({
 }) {
   const data = getShiftData(shift);
 
-  const extraHours = extra
-    ? Number(extra.hours) || 0
-    : 0;
+  // =========================================
+  // OT SAMBUNG
+  // =========================================
 
-  const totalOt = data.ot + extraHours;
+  const extraHoursText = String(
+    extra?.hours ?? ""
+  ).trim();
+
+  const extraTypeText = String(
+    extra?.type ?? ""
+  ).trim();
+
+  // Hanya nombor dikira sebagai jam
+  const numericExtraHours =
+    extraHoursText === ""
+      ? 0
+      : Number(
+          extraHoursText.replace(",", ".")
+        );
+
+  const validExtraHours =
+    Number.isNaN(numericExtraHours)
+      ? 0
+      : numericExtraHours;
+
+  const totalOt =
+    (Number(data.ot) || 0) +
+    validExtraHours;
 
   // =========================================
-  // WARNA TARIKH + HARI
+  // ADA TEKS OT SAMBUNG?
+  // =========================================
+
+  const hasExtraText =
+    extraTypeText !== "" ||
+    extraHoursText !== "";
+
+  // =========================================
+  // WARNA TARIKH
   // =========================================
 
   function getDateBoxStyle() {
-    // D/S = KUNING CERAH
+    // D/S
     if (
       shift === "KERJA BIASA D/S" ||
       shift === "KERJA OD D/S"
@@ -31,7 +65,7 @@ export default function DayRow({
       return "bg-yellow-400 border-yellow-200 text-slate-950";
     }
 
-    // N/S = KELABU
+    // N/S
     if (
       shift === "KERJA BIASA N/S" ||
       shift === "KERJA OD N/S"
@@ -39,7 +73,7 @@ export default function DayRow({
       return "bg-slate-500 border-slate-300 text-white";
     }
 
-    // PH D/S + PH N/S = UNGU
+    // PH
     if (
       shift === "KERJA PH D/S" ||
       shift === "KERJA PH N/S"
@@ -47,17 +81,17 @@ export default function DayRow({
       return "bg-purple-500 border-purple-200 text-white";
     }
 
-    // CUTI = HIJAU
+    // CUTI
     if (shift === "CUTI") {
       return "bg-green-600 border-green-300 text-white";
     }
 
-    // MC = MERAH
+    // MC
     if (shift === "MC") {
       return "bg-red-600 border-red-300 text-white";
     }
 
-    // OFF + REST = BIRU MUDA
+    // OFF / REST
     if (
       shift === "OFF" ||
       shift === "REST"
@@ -65,7 +99,6 @@ export default function DayRow({
       return "bg-sky-300 border-sky-100 text-slate-950";
     }
 
-    // KOSONG
     return "bg-slate-900 border-slate-800 text-slate-300";
   }
 
@@ -82,7 +115,6 @@ export default function DayRow({
         py-0.5
       "
     >
-
       {/* =====================================
           TARIKH + HARI
           ===================================== */}
@@ -109,17 +141,18 @@ export default function DayRow({
         </div>
       </div>
 
-
       {/* =====================================
           SYIF + OT SAMBUNG
           ===================================== */}
 
       <div className="min-w-0">
-
         <select
           value={shift}
           onChange={(e) =>
-            onShiftChange(day, e.target.value)
+            onShiftChange(
+              day,
+              e.target.value
+            )
           }
           className="
             h-8
@@ -141,23 +174,29 @@ export default function DayRow({
             PILIH SYIF
           </option>
 
-          {SHIFT_OPTIONS.map((option) => (
-            <option
-              key={option}
-              value={option}
-            >
-              {option}
-            </option>
-          ))}
+          {SHIFT_OPTIONS.map(
+            (option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            )
+          )}
         </select>
 
+        {/* =================================
+            OT SAMBUNG
+            HANYA PAPAR JIKA ADA INPUT
+            ================================= */}
 
-        {/* OT SAMBUNG */}
-
-        {extra && (
+        {hasExtraText && (
           <button
             type="button"
-            onClick={() => onOpenOt(day)}
+            onClick={() =>
+              onOpenOt(day)
+            }
             className="
               mt-0.5
               block
@@ -173,19 +212,33 @@ export default function DayRow({
             "
             title="Edit OT Sambung"
           >
-            {extra.type} • {extra.hours}J
+            {extraTypeText}
+
+            {extraTypeText !== "" &&
+              extraHoursText !== "" && (
+                <span>
+                  {" • "}
+                </span>
+              )}
+
+            {extraHoursText !== "" && (
+  <>
+    {extraTypeText !== ""}
+    {extraHoursText}
+    {!/[jJ]\s*$/.test(extraHoursText) &&
+      /[0-9]/.test(extraHoursText) &&
+      " Jam"}
+  </>
+)}
           </button>
         )}
-
       </div>
 
-
       {/* =====================================
-          JUMLAH OT
+          OT
           ===================================== */}
 
       <div className="text-center">
-
         {totalOt !== 0 ? (
           <span
             className={`
@@ -198,45 +251,44 @@ export default function DayRow({
               }
             `}
           >
-            {Number(totalOt.toFixed(1))}J
+            {Number(
+              totalOt.toFixed(1)
+            )}
+            J
           </span>
         ) : (
           <span className="text-[10px] text-slate-700">
             —
           </span>
         )}
-
       </div>
-
 
       {/* =====================================
           ELAUN
           ===================================== */}
 
       <div className="text-center">
-
         {data.elaun > 0 ? (
           <span className="text-[10px] font-black text-blue-200">
-            RM{data.elaun}
+            RM {data.elaun}
           </span>
         ) : (
           <span className="text-[10px] text-slate-700">
             —
           </span>
         )}
-
       </div>
 
-
       {/* =====================================
-          BUTTON OT SAMBUNG
+          BUTTON OT
           ===================================== */}
 
       <div className="flex justify-center">
-
         <button
           type="button"
-          onClick={() => onOpenOt(day)}
+          onClick={() =>
+            onOpenOt(day)
+          }
           className="
             flex
             h-7
@@ -255,9 +307,7 @@ export default function DayRow({
         >
           ⚙️
         </button>
-
       </div>
-
     </div>
   );
 }

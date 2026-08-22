@@ -55,20 +55,6 @@ export function getShiftData(shift) {
         elaun: 20,
       };
 
-    case "CUTI":
-      return {
-        type: "OFF",
-        ot: 0,
-        elaun: 0,
-      };
-
-    case "MC":
-      return {
-        type: "OFF",
-        ot: 0,
-        elaun: 0,
-      };
-
     case "OFF":
       return {
         type: "OFF",
@@ -77,6 +63,20 @@ export function getShiftData(shift) {
       };
 
     case "REST":
+      return {
+        type: "OFF",
+        ot: 0,
+        elaun: 0,
+      };
+
+    case "CUTI":
+      return {
+        type: "OFF",
+        ot: 0,
+        elaun: 0,
+      };
+
+    case "MC":
       return {
         type: "OFF",
         ot: 0,

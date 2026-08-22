@@ -4,14 +4,12 @@ export default function Header({
   summary,
   onReset,
 }) {
-
   return (
-
     <section
       className="
-      sticky
-      top-0
-      z-[100] 
+        sticky
+        top-0
+        z-[100]
         border-b
         border-blue-900/40
         bg-slate-950
@@ -20,30 +18,26 @@ export default function Header({
         pt-1
       "
     >
-
-      {/* =====================================
-          TAJUK
-          ===================================== */}
+      {/* TAJUK */}
 
       <h1
-  className="
-    mb-2
-    text-center
-    text-xl
-    font-black
-    uppercase
-    tracking-[0.18em]
-    text-white
-    drop-shadow-[0_0_8px_rgba(59,130,246,0.35)]
-  "
->
-  <span className="text-blue-400">ROSTER / JADUAL SYIF</span>
-</h1>
+        className="
+          mb-2
+          text-center
+          text-xl
+          font-black
+          uppercase
+          tracking-[0.18em]
+          text-white
+          drop-shadow-[0_0_8px_rgba(59,130,246,0.35)]
+        "
+      >
+        <span className="text-blue-400">
+          ROSTER / JADUAL SYIF
+        </span>
+      </h1>
 
-
-      {/* =====================================
-          DATA
-          ===================================== */}
+      {/* DATA */}
 
       <div
         className="
@@ -54,25 +48,6 @@ export default function Header({
           p-2
         "
       >
-
-        <h2
-          className="
-            mb-2
-            text-xs
-            font-black
-            uppercase
-            tracking-wide
-            text-blue-200
-          "
-        >
-          DATA
-        </h2>
-
-
-        {/* =================================
-            BARIS DATA
-            ================================= */}
-
         <div
           className="
             grid
@@ -81,8 +56,7 @@ export default function Header({
             sm:grid-cols-3
           "
         >
-
-          {/* KERJA NORMAL */}
+          {/* NORMAL */}
 
           <div
             className="
@@ -94,19 +68,16 @@ export default function Header({
               py-1.5
             "
           >
-
-            <div className="text-[8px] text-slate-500">
+            <div className="text-[8px] font-bold text-slate-500">
               KERJA NORMAL
             </div>
 
             <div className="text-sm font-black text-white">
               {summary.normalDays} Hari
             </div>
-
           </div>
 
-
-          {/* KERJA PH */}
+          {/* PH */}
 
           <div
             className="
@@ -118,17 +89,14 @@ export default function Header({
               py-1.5
             "
           >
-
-            <div className="text-[8px] text-slate-500">
+            <div className="text-[8px] font-bold text-slate-500">
               KERJA PH
             </div>
 
             <div className="text-sm font-black text-white">
               {summary.phDays} Hari
             </div>
-
           </div>
-
 
           {/* OT NORMAL */}
 
@@ -142,17 +110,14 @@ export default function Header({
               py-1.5
             "
           >
-
-            <div className="text-[8px] text-slate-500">
+            <div className="text-[8px] font-bold text-slate-500">
               OT NORMAL
             </div>
 
-            <div className="text-sm font-black">
+            <div className="text-sm font-black text-blue-300">
               {summary.otNormal} Jam
             </div>
-
           </div>
-
 
           {/* OT PH */}
 
@@ -166,19 +131,16 @@ export default function Header({
               py-1.5
             "
           >
-
-            <div className="text-[8px] text-slate-500">
+            <div className="text-[8px] font-bold text-slate-500">
               OT PH
             </div>
 
-            <div className="text-sm font-black">
-              {summary.otPh}  Jam
+            <div className="text-sm font-black text-purple-300">
+              {summary.otPh} Jam
             </div>
-
           </div>
 
-
-          {/* ELAUN SYIF */}
+          {/* ELAUN */}
 
           <div
             className="
@@ -192,23 +154,17 @@ export default function Header({
               sm:col-span-1
             "
           >
-
-            <div className="text-[8px] text-slate-500">
+            <div className="text-[8px] font-bold text-slate-500">
               ELAUN SYIF
             </div>
 
-            <div className="text-sm font-black">
+            <div className="text-sm font-black text-yellow-300">
               RM {summary.elaun}
             </div>
-
           </div>
-
         </div>
 
-
-        {/* =================================
-            RESET
-            ================================= */}
+        {/* RESET */}
 
         <button
           type="button"
@@ -233,10 +189,7 @@ export default function Header({
         >
           🗑 RESET SEMUA DATA
         </button>
-
       </div>
-
     </section>
-
   );
 }
