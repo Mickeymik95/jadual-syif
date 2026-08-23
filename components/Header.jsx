@@ -33,7 +33,7 @@ export default function Header({
         "
       >
         <span className="text-blue-400">
-          ROSTER / JADUAL SYIF
+          JADUAL SYIF AUTO KIRA
         </span>
       </h1>
 
