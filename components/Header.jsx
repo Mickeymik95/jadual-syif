@@ -225,8 +225,8 @@ export default function Header({
               col-span-2
               rounded-md
               border
-              border-blue-800
-              bg-blue-950/30
+              border-slate-800
+              bg-slate-950
               px-1.5
               py-0.5
               sm:col-span-2
@@ -294,7 +294,7 @@ export default function Header({
               ELAUN SYIF
             </div>
 
-            <div className="text-[11px] font-black text-yellow-300">
+            <div className="text-[11px] font-black text-green-300">
               RM {summary.elaun}
             </div>
 

@@ -42,67 +42,106 @@ export default function DayRow({
     (Number(data.ot) || 0) +
     validExtraHours;
 
+  // =========================================
+  // SEMAK ADA OT SAMBUNG
+  // =========================================
+
+  const hasExtra =
+    extra &&
+    (
+      String(extra.type ?? "").trim() !== "" ||
+      String(extra.hours ?? "").trim() !== ""
+    );
 
   // =========================================
   // WARNA TARIKH + HARI
   // =========================================
 
- function getDateBoxStyle() {
+  function getDateBoxStyle() {
+    // DS
+    if (shift === "DS") {
+      return "bg-yellow-600 border-yellow-200 text-slate-950";
+    }
 
-  // DS
-  if (
-    shift === "DS" ||
-    shift === "KERJA BIASA D/S" ||
-    shift === "KERJA OD D/S"
-  ) {
-    return "bg-yellow-400 border-yellow-200 text-slate-950";
-  }
+    // NS
+    if (shift === "NS") {
+      return "bg-slate-600 border-slate-300 text-white";
+    }
 
-  // NS
-  if (
-    shift === "NS" ||
-    shift === "KERJA BIASA N/S" ||
-    shift === "KERJA OD N/S"
-  ) {
-    return "bg-slate-500 border-slate-300 text-white";
-  }
+    // OD DS
+    if (shift === "OD DS") {
+      return "bg-yellow-300 border-yellow-200 text-slate-950";
+    }
 
-  // PH DS / PH NS
-  if (
-    shift === "PH DS" ||
-    shift === "PH NS" ||
-    shift === "KERJA PH D/S" ||
-    shift === "KERJA PH N/S"
-  ) {
-    return "bg-purple-500 border-purple-200 text-white";
-  }
+    // OD NS
+    if (shift === "OD NS") {
+      return "bg-slate-400 border-slate-400 text-white";
+    }
 
-  // CUTI / AL = BIRU
-  if (
-    shift === "CUTI" ||
-    shift === "AL" ||
-    shift === "CUTI/AL"
-  ) {
-    return "bg-blue-500 border-blue-300 text-white";
-  }
+    // PH DS
+    if (shift === "PH DS") {
+      return "bg-purple-500 border-purple-200 text-white";
+    }
 
-  // MC = MERAH
-  if (shift === "MC") {
-    return "bg-red-600 border-red-300 text-white";
-  }
+    // PH NS
+    if (shift === "PH NS") {
+      return "bg-purple-600 border-purple-300 text-white";
+    }
 
-  // OFF / REST = TIADA WARNA KHAS
-  if (
-    shift === "OFF" ||
-    shift === "REST"
-  ) {
+    // CUTI / AL
+    if (shift === "CUTI/AL") {
+      return "bg-blue-500 border-blue-300 text-white";
+    }
+
+    // MC
+    if (shift === "MC") {
+      return "bg-red-600 border-red-300 text-white";
+    }
+
+    // OFF / REST
+    if (
+      shift === "OFF" ||
+      shift === "REST"
+    ) {
+      return "bg-slate-900 border-slate-800 text-slate-300";
+    }
+
+    // KOSONG
     return "bg-slate-900 border-slate-800 text-slate-300";
   }
 
-  // KOSONG
-  return "bg-slate-900 border-slate-800 text-slate-300";
-}
+  // =========================================
+  // SAIZ
+  // =========================================
+  //
+  // TARIKH SENTIASA 38px
+  //
+  // TIADA OT:
+  //     SYIF = 38px
+  //
+  // ADA OT:
+  //     OT   = 14px
+  //     SYIF = 24px
+  //
+  // JUMLAH = 38px
+  // =========================================
 
+  const shiftHeightClass = hasExtra
+    ? "h-[24px]"
+    : "h-[38px]";
+
+  // Nilai OT / Elaun perlu turun sedikit
+  // apabila terdapat OT Sambung supaya
+  // kedudukannya selari dengan SYIF.
+
+  const valuePaddingClass = hasExtra
+    ? "pt-[14px]"
+    : "pt-[12px]";
+
+  // Button juga ikut tinggi syif.
+  const buttonHeightClass = hasExtra
+    ? "h-[24px]"
+    : "h-[38px]";
 
   // =========================================
   // UI
@@ -113,9 +152,8 @@ export default function DayRow({
       className="
         grid
         grid-cols-[88px_minmax(0,1fr)_42px_52px_32px]
-        items-center
+        items-start
         gap-1
-        min-h-[44px]
         border-b
         border-slate-800
         px-1
@@ -125,12 +163,14 @@ export default function DayRow({
 
       {/* =====================================
           TARIKH + HARI
+          SENTIASA 38px
           ===================================== */}
 
       <div
         className={`
           flex
           min-h-[38px]
+          h-[38px]
           flex-row
           items-center
           gap-1.5
@@ -173,11 +213,82 @@ export default function DayRow({
 
       {/* =====================================
           SYIF + OT SAMBUNG
+          JUMLAH TINGGI SENTIASA 38px
           ===================================== */}
 
-      <div className="min-w-0 pl-1">
+      <div
+        className="
+          min-w-0
+          pl-1
+        "
+      >
 
-        {/* SYIF */}
+        {/* =================================
+            OT SAMBUNG
+            ================================= */}
+
+        {hasExtra ? (
+
+          <div
+            className="
+              h-[14px]
+              overflow-hidden
+              pl-2
+            "
+          >
+
+            <button
+              type="button"
+              onClick={() =>
+                onOpenOt(day)
+              }
+              className="
+                block
+                max-w-full
+                truncate
+                text-left
+                text-[8px]
+                font-black
+                uppercase
+                leading-[14px]
+                text-red-500
+                hover:text-red-300
+              "
+              title="Edit OT Sambung"
+            >
+
+              {String(
+                extra.type ||
+                "OT SAMBUNG"
+              )}
+
+              {String(
+                extra.hours ?? ""
+              ).trim() !== "" && (
+                <>
+                  {" • "}
+                  {String(
+                    extra.hours
+                  ).trim()}
+                  J
+                </>
+              )}
+
+            </button>
+
+          </div>
+
+        ) : (
+
+          // Tiada OT → tiada ruang tambahan
+          <div className="h-0" />
+
+        )}
+
+
+        {/* =================================
+            SYIF
+            ================================= */}
 
         <select
           value={shift}
@@ -187,21 +298,21 @@ export default function DayRow({
               e.target.value
             )
           }
-          className="
-  h-6
-  w-full
-  min-w-0
-  rounded-md
-  border
-  border-slate-700
-  bg-slate-950
-  px-1
-  text-[9px]
-  font-bold
-  text-slate-200
-  outline-none
-  focus:border-blue-500
-"
+          className={`
+            ${shiftHeightClass}
+            w-full
+            min-w-0
+            rounded-md
+            border
+            border-slate-700
+            bg-slate-950
+            px-1
+            text-[9px]
+            font-bold
+            text-slate-200
+            outline-none
+            focus:border-blue-500
+          `}
         >
 
           <option value="">
@@ -210,19 +321,6 @@ export default function DayRow({
 
           {SHIFT_OPTIONS.map(
             (option, index) => {
-
-              /*
-               * SUPPORT:
-               *
-               * "DS"
-               *
-               * ATAU
-               *
-               * {
-               *   value: "DS",
-               *   label: "DS"
-               * }
-               */
 
               const optionValue =
                 typeof option === "object"
@@ -252,57 +350,6 @@ export default function DayRow({
 
         </select>
 
-
-        {/* =====================================
-            RUANG TETAP OT SAMBUNG
-            ===================================== */}
-
-        <div
-          className="
-            h-4
-            overflow-hidden
-          "
-        >
-
-          {extra && (
-            <button
-              type="button"
-              onClick={() =>
-                onOpenOt(day)
-              }
-              className="
-                block
-                max-w-full
-                truncate
-                pl-1
-                text-left
-                text-[9px]
-                font-black
-                uppercase
-                leading-4
-                text-red-500
-                hover:text-red-300
-              "
-              title="Edit OT Sambung"
-            >
-
-              {extra.type ||
-                "OT SAMBUNG"}
-
-              {String(
-                extra.hours ?? ""
-              ).trim() !== "" && (
-                <>
-                  {" • "}
-                  {extra.hours}J
-                </>
-              )}
-
-            </button>
-          )}
-
-        </div>
-
       </div>
 
 
@@ -311,9 +358,10 @@ export default function DayRow({
           ===================================== */}
 
       <div
-        className="
+        className={`
           text-center
-        "
+          ${valuePaddingClass}
+        `}
       >
 
         {totalOt !== 0 ? (
@@ -355,9 +403,10 @@ export default function DayRow({
           ===================================== */}
 
       <div
-        className="
+        className={`
           text-center
-        "
+          ${valuePaddingClass}
+        `}
       >
 
         {data.elaun > 0 ? (
@@ -393,10 +442,15 @@ export default function DayRow({
           ===================================== */}
 
       <div
-        className="
+        className={`
           flex
           justify-center
-        "
+          ${
+            hasExtra
+              ? "pt-[14px]"
+              : ""
+          }
+        `}
       >
 
         <button
@@ -404,10 +458,10 @@ export default function DayRow({
           onClick={() =>
             onOpenOt(day)
           }
-          className="
+          className={`
             flex
-            h-7
-            w-7
+            ${buttonHeightClass}
+            w-full
             items-center
             justify-center
             rounded-md
@@ -418,7 +472,7 @@ export default function DayRow({
             font-black
             text-blue-200
             hover:bg-blue-800
-          "
+          `}
           title="OT Sambung"
         >
           ⚙️
