@@ -293,7 +293,7 @@ export default function Header({
               ELAUN SYIF
             </div>
 
-            <div className="text-[11px] font-black text-green-300">
+            <div className="text-[11px] font-black">
               RM {summary.elaun}
             </div>
 

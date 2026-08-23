@@ -98,7 +98,7 @@ export default function DayRow({
       shift === "OFF" ||
       shift === "REST"
     ) {
-      return "bg-slate-900 border-slate-800 text-slate-300";
+      return "bg-green-800 border-green-900 text-slate-300";
     }
 
     return "bg-slate-900 border-slate-800 text-slate-300";
@@ -151,7 +151,7 @@ export default function DayRow({
           ${getDateBoxStyle()}
           ${
             isToday
-              ? "animate-pulse ring-2 ring-white-400 ring-offset-1 ring-offset-slate-600"
+              ? "animate-pulse ring-2 ring-whitenpm-400 ring-offset-1 ring-offset-slate-600"
               : ""
           }
         `}
