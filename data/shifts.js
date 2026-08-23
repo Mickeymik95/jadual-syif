@@ -1,27 +1,27 @@
 export const SHIFT_OPTIONS = [
   {
     value: "DS",
-    label: "DS",
+    label: "D/S",
   },
   {
     value: "NS",
-    label: "NS",
+    label: "N/S",
   },
   {
     value: "OD DS",
-    label: "OD DS",
+    label: "OD D/S",
   },
   {
     value: "OD NS",
-    label: "OD NS",
+    label: "OD N/S",
   },
   {
     value: "PH DS",
-    label: "PH DS",
+    label: "PH D/S",
   },
   {
     value: "PH NS",
-    label: "PH NS",
+    label: "PH N/S",
   },
   {
     value: "CUTI/AL",
