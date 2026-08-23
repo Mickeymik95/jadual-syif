@@ -11,6 +11,12 @@ export default function Header({
     Number(summary.otNormal || 0) +
     Number(summary.otPh || 0);
 
+  const jumlahOtDisplay = Number(
+    jumlahOt.toFixed(1)
+  );
+
+  const otLebih104 = jumlahOt > 104;
+
   return (
     <section
       className="
@@ -26,27 +32,31 @@ export default function Header({
       "
     >
 
-      {/* TAJUK */}
+      {/* =====================================
+          TAJUK
+          ===================================== */}
 
       <h1
         className="
-          mb-1
+          mb-2
           text-center
-          text-lg
+          text-xl
           font-black
           uppercase
-          tracking-[0.14em]
+          tracking-[0.18em]
           text-blue-400
-          drop-shadow-[0_0_6px_rgba(59,130,246,0.35)]
+          drop-shadow-[0_0_8px_rgba(59,130,246,0.35)]
         "
       >
         ROSTER / JADUAL SYIF
       </h1>
 
 
-      {/* PILIH BULAN */}
+      {/* =====================================
+          PILIH BULAN
+          ===================================== */}
 
-      <div className="mb-1.5">
+      <div className="mb-2">
 
         <select
           value={selectedMonth}
@@ -54,14 +64,14 @@ export default function Header({
             onMonthChange(e.target.value)
           }
           className="
-            h-8
+            h-9
             w-full
             rounded-lg
             border
             border-blue-800
             bg-slate-900
-            px-2
-            text-xs
+            px-3
+            text-sm
             font-black
             uppercase
             tracking-wide
@@ -89,15 +99,17 @@ export default function Header({
       </div>
 
 
-      {/* DATA */}
+      {/* =====================================
+          DATA
+          ===================================== */}
 
       <div
         className="
-          rounded-lg
+          rounded-xl
           border
           border-blue-900/50
           bg-slate-900
-          p-1.5
+          p-2
         "
       >
 
@@ -105,7 +117,7 @@ export default function Header({
           className="
             grid
             grid-cols-2
-            gap-1
+            gap-1.5
             sm:grid-cols-3
           "
         >
@@ -114,21 +126,23 @@ export default function Header({
 
           <div
             className="
-              rounded-md
+              rounded-lg
               border
               border-slate-800
               bg-slate-950
               px-2
-              py-1
+              py-1.5
             "
           >
-            <div className="text-[7px] font-bold text-slate-500">
+
+            <div className="text-[8px] font-bold text-slate-500">
               KERJA NORMAL
             </div>
 
-            <div className="text-xs font-black text-white">
+            <div className="text-sm font-black text-white">
               {summary.normalDays} Hari
             </div>
+
           </div>
 
 
@@ -136,21 +150,23 @@ export default function Header({
 
           <div
             className="
-              rounded-md
+              rounded-lg
               border
               border-slate-800
               bg-slate-950
               px-2
-              py-1
+              py-1.5
             "
           >
-            <div className="text-[7px] font-bold text-slate-500">
+
+            <div className="text-[8px] font-bold text-slate-500">
               KERJA PH
             </div>
 
-            <div className="text-xs font-black text-white">
+            <div className="text-sm font-black text-white">
               {summary.phDays} Hari
             </div>
+
           </div>
 
 
@@ -158,21 +174,23 @@ export default function Header({
 
           <div
             className="
-              rounded-md
+              rounded-lg
               border
               border-slate-800
               bg-slate-950
               px-2
-              py-1
+              py-1.5
             "
           >
-            <div className="text-[7px] font-bold text-slate-500">
+
+            <div className="text-[8px] font-bold text-slate-500">
               OT NORMAL
             </div>
 
-            <div className="text-xs font-black text-blue-300">
+            <div className="text-sm font-black text-blue-300">
               {summary.otNormal} Jam
             </div>
+
           </div>
 
 
@@ -180,97 +198,108 @@ export default function Header({
 
           <div
             className="
-              rounded-md
+              rounded-lg
               border
               border-slate-800
               bg-slate-950
               px-2
-              py-1
+              py-1.5
             "
           >
-            <div className="text-[7px] font-bold text-slate-500">
+
+            <div className="text-[8px] font-bold text-slate-500">
               OT PH
             </div>
 
-            <div className="text-xs font-black text-purple-300">
+            <div className="text-sm font-black text-purple-300">
               {summary.otPh} Jam
             </div>
+
           </div>
 
 
-          {/* JUMLAH OT */}
-
-<div
-  className="
-    col-span-2
-    rounded-lg
-    border
-    border-blue-800
-    bg-blue-950/30
-    px-2
-    py-1
-    sm:col-span-2
-  "
->
-  <div className="text-[8px] font-bold text-slate-400">
-    JUMLAH OT
-  </div>
-
-  <div className="flex items-center justify-between gap-2">
-
-    {/* JUMLAH OT */}
-    <div className="text-base font-black text-blue-200">
-      {Number(
-        (
-          Number(summary.otNormal) +
-          Number(summary.otPh)
-        ).toFixed(1)
-      )} Jam
-    </div>
-
-    {/* AMARAN > 104 JAM */}
-    {(
-      Number(summary.otNormal) +
-      Number(summary.otPh)
-    ) > 104 && (
-      <div
-        className="
-          animate-pulse
-          whitespace-nowrap
-          text-[12px]
-          font-black
-          uppercase
-          text-orange-400
-        "
-      >
-        ⚠️ OT MELEBIHI 104 JAM
-      </div>
-    )}
-
-  </div>
-</div>
-
-
-          {/* ELAUN SYIF */}
+          {/* =================================
+              JUMLAH OT
+              ================================= */}
 
           <div
             className="
               col-span-2
-              rounded-md
+              rounded-lg
+              border
+              border-blue-800
+              bg-blue-950/30
+              px-2
+              py-1
+              sm:col-span-2
+            "
+          >
+
+            <div className="text-[8px] font-bold text-slate-400">
+              JUMLAH OT
+            </div>
+
+
+            <div className="flex items-center justify-between gap-2">
+
+              {/* JUMLAH */}
+
+              <div
+                className="
+                  whitespace-nowrap
+                  text-base
+                  font-black
+                  text-blue-200
+                "
+              >
+                {jumlahOtDisplay} Jam
+              </div>
+
+
+              {/* AMARAN */}
+
+              {otLebih104 && (
+                <div
+                  className="
+                    animate-pulse
+                    whitespace-nowrap
+                    text-[8px]
+                    font-black
+                    uppercase
+                    text-red-400
+                  "
+                >
+                  ⚠️ OT MELEBIHI 104 JAM
+                </div>
+              )}
+
+            </div>
+
+          </div>
+
+
+          {/* =================================
+              ELAUN SYIF
+              ================================= */}
+
+          <div
+            className="
+              col-span-2
+              rounded-lg
               border
               border-blue-900/40
               bg-slate-950
               px-2
-              py-1
+              py-1.5
               sm:col-span-1
             "
           >
 
-            <div className="text-[7px] font-bold text-slate-500">
+            <div className="text-[8px] font-bold text-slate-500">
               ELAUN SYIF
             </div>
 
-            <div className="text-xs font-black text-yellow-300">
+            <div className="text-sm font-black text-yellow-300">
               RM {summary.elaun}
             </div>
 
@@ -279,20 +308,22 @@ export default function Header({
         </div>
 
 
-        {/* RESET */}
+        {/* =====================================
+            RESET BULAN INI
+            ===================================== */}
 
         <button
           type="button"
           onClick={onReset}
           className="
-            mt-1.5
-            h-7
+            mt-2
+            h-8
             w-full
-            rounded-md
+            rounded-lg
             border
             border-red-900/60
             bg-red-950/40
-            text-[14px]
+            text-[9px]
             font-black
             uppercase
             tracking-wide
