@@ -151,7 +151,7 @@ export default function DayRow({
           ${getDateBoxStyle()}
           ${
             isToday
-              ? "animate-pulse ring-2 ring-green-400 ring-offset-1 ring-offset-slate-600"
+              ? "animate-pulse ring-2 ring-white-400 ring-offset-1 ring-offset-slate-600"
               : ""
           }
         `}
