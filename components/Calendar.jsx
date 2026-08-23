@@ -1,65 +1,76 @@
 "use client";
 
-import { useMemo } from "react";
 import DayRow from "./DayRow";
 
 export default function Calendar({
   currentDate,
+  selectedMonth,
+  days,
   shifts,
   otSambung,
   onShiftChange,
   onOpenOt,
 }) {
-  const monthName = currentDate.toLocaleDateString("ms-MY", {
+  const monthName = new Date(
+    currentDate.getFullYear(),
+    selectedMonth,
+    1
+  ).toLocaleDateString("ms-MY", {
     month: "long",
   });
 
-  const year = currentDate.getFullYear();
+  const year =
+    currentDate.getFullYear();
 
-  const daysInMonth = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth() + 1,
-    0
-  ).getDate();
-
-
-  const days = useMemo(() => {
-    return Array.from(
-      { length: daysInMonth },
-      (_, index) => {
-        const day = index + 1;
-
-        const date = new Date(
-          currentDate.getFullYear(),
-          currentDate.getMonth(),
-          day
-        );
-
-        return {
-          day,
-          weekday: date.toLocaleDateString("ms-MY", {
-            weekday: "short",
-          }),
-        };
-      }
-    );
-  }, [currentDate, daysInMonth]);
-
+  const daysInMonth =
+    days.length;
 
   return (
     <section className="mx-auto max-w-md px-1 py-1">
 
-      <div className="overflow-hidden rounded-lg border border-blue-900/40 bg-slate-900">
+      <div
+        className="
+          overflow-hidden
+          rounded-lg
+          border
+          border-blue-900/40
+          bg-slate-900
+        "
+      >
 
         {/* BULAN */}
 
-        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-2 py-1.5">
+        <div
+          className="
+            flex
+            items-center
+            justify-between
+            border-b
+            border-slate-800
+            bg-slate-950
+            px-2
+            py-1.5
+          "
+        >
 
-          <h2 className="text-[11px] font-black uppercase text-blue-200">
+          <h2
+            className="
+              text-[11px]
+              font-black
+              uppercase
+              text-blue-200
+            "
+          >
             📅 {monthName} {year}
           </h2>
 
-          <span className="text-[8px] text-slate-600">
+          <span
+            className="
+              text-[8px]
+              font-bold
+              text-slate-600
+            "
+          >
             {daysInMonth} HARI
           </span>
 
@@ -71,7 +82,7 @@ export default function Calendar({
         <div
           className="
             grid
-            grid-cols-[56px_minmax(0,1fr)_40px_48px_32px]
+            grid-cols-[68px_minmax(0,1fr)_38px_48px_30px]
             items-center
             gap-1
             border-b

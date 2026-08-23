@@ -1,59 +1,150 @@
 export const SHIFT_OPTIONS = [
-  "KERJA BIASA D/S",
-  "KERJA BIASA N/S",
-  "KERJA OD D/S",
-  "KERJA OD N/S",
-  "KERJA PH D/S",
-  "KERJA PH N/S",
-  "OFF",
-  "REST",
-  "CUTI",
-  "MC",
+  {
+    value: "DS",
+    label: "DS",
+  },
+  {
+    value: "NS",
+    label: "NS",
+  },
+  {
+    value: "OD DS",
+    label: "OD DS",
+  },
+  {
+    value: "OD NS",
+    label: "OD NS",
+  },
+  {
+    value: "PH DS",
+    label: "PH DS",
+  },
+  {
+    value: "PH NS",
+    label: "PH NS",
+  },
+  {
+    value: "CUTI/AL",
+    label: "CUTI / AL",
+  },
+  {
+    value: "MC",
+    label: "MC",
+  },
+  {
+    value: "OFF",
+    label: "OFF",
+  },
+  {
+    value: "REST",
+    label: "REST",
+  },
 ];
 
+
 export function getShiftData(shift) {
+
   switch (shift) {
-    case "KERJA BIASA D/S":
+
+    // ==============================
+    // DS
+    // ==============================
+
+    case "DS":
       return {
         type: "NORMAL",
         ot: 3.5,
         elaun: 15,
       };
 
-    case "KERJA BIASA N/S":
+
+    // ==============================
+    // NS
+    // ==============================
+
+    case "NS":
       return {
         type: "NORMAL",
         ot: 3.5,
         elaun: 20,
       };
 
-    case "KERJA OD D/S":
+
+    // ==============================
+    // OD DS
+    // ==============================
+
+    case "OD DS":
       return {
         type: "NORMAL",
         ot: 11.5,
         elaun: 15,
       };
 
-    case "KERJA OD N/S":
+
+    // ==============================
+    // OD NS
+    // ==============================
+
+    case "OD NS":
       return {
         type: "NORMAL",
         ot: 11.5,
         elaun: 20,
       };
 
-    case "KERJA PH D/S":
+
+    // ==============================
+    // PH DS
+    // ==============================
+
+    case "PH DS":
       return {
         type: "PH",
         ot: 3.5,
         elaun: 15,
       };
 
-    case "KERJA PH N/S":
+
+    // ==============================
+    // PH NS
+    // ==============================
+
+    case "PH NS":
       return {
         type: "PH",
         ot: 3.5,
         elaun: 20,
       };
+
+
+    // ==============================
+    // CUTI / AL
+    // ==============================
+
+    case "CUTI/AL":
+      return {
+        type: "OFF",
+        ot: 0,
+        elaun: 0,
+      };
+
+
+    // ==============================
+    // MC
+    // ==============================
+
+    case "MC":
+      return {
+        type: "OFF",
+        ot: 0,
+        elaun: 0,
+      };
+
+
+    // ==============================
+    // OFF
+    // ==============================
 
     case "OFF":
       return {
@@ -62,6 +153,11 @@ export function getShiftData(shift) {
         elaun: 0,
       };
 
+
+    // ==============================
+    // REST
+    // ==============================
+
     case "REST":
       return {
         type: "OFF",
@@ -69,19 +165,10 @@ export function getShiftData(shift) {
         elaun: 0,
       };
 
-    case "CUTI":
-      return {
-        type: "OFF",
-        ot: 0,
-        elaun: 0,
-      };
 
-    case "MC":
-      return {
-        type: "OFF",
-        ot: 0,
-        elaun: 0,
-      };
+    // ==============================
+    // DEFAULT
+    // ==============================
 
     default:
       return {

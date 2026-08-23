@@ -8,328 +8,800 @@ import OtModal from "../components/OtModal";
 
 import { getShiftData } from "../data/shifts";
 
-const STORAGE_KEY = "jadual-syif-data-v1";
+const STORAGE_KEY = "jadual-syif-data-v3";
+
+const MONTHS = [
+  "JANUARI",
+  "FEBRUARI",
+  "MAC",
+  "APRIL",
+  "MEI",
+  "JUN",
+  "JULAI",
+  "OGOS",
+  "SEPTEMBER",
+  "OKTOBER",
+  "NOVEMBER",
+  "DISEMBER",
+];
+
+
+// =========================================
+// DATA KOSONG 12 BULAN
+// =========================================
+
+function createEmptyMonths() {
+  return MONTHS.reduce((result, _, index) => {
+    result[index] = {
+      shifts: {},
+      otSambung: {},
+    };
+
+    return result;
+  }, {});
+}
+
 
 export default function Home() {
-  const [shifts, setShifts] = useState({});
-  const [otSambung, setOtSambung] = useState({});
-
-  const [selectedDay, setSelectedDay] = useState(null);
-
-  const [otType, setOtType] = useState("");
-  const [otHours, setOtHours] = useState("");
-
-  const [loaded, setLoaded] = useState(false);
 
   // =========================================
   // TARIKH SEMASA
   // =========================================
 
-  const [currentDate] = useState(() => new Date());
+  const [currentDate] = useState(
+    () => new Date()
+  );
+
+
+  // =========================================
+  // BULAN DIPILIH
+  // DEFAULT = BULAN SEMASA
+  // =========================================
+
+  const [selectedMonth, setSelectedMonth] =
+    useState(
+      () => new Date().getMonth()
+    );
+
+
+  // =========================================
+  // DATA 12 BULAN
+  // =========================================
+
+  const [monthData, setMonthData] =
+    useState(
+      () => createEmptyMonths()
+    );
+
+
+  const [loaded, setLoaded] =
+    useState(false);
+
+
+  // =========================================
+  // DATA BULAN SEMASA
+  // =========================================
+
+  const currentMonthData =
+    monthData[selectedMonth] || {
+      shifts: {},
+      otSambung: {},
+    };
+
+
+  const shifts =
+    currentMonthData.shifts || {};
+
+
+  const otSambung =
+    currentMonthData.otSambung || {};
+
+
+  // =========================================
+  // MODAL OT
+  // =========================================
+
+  const [selectedDay, setSelectedDay] =
+    useState(null);
+
+
+  const [otType, setOtType] =
+    useState("");
+
+
+  const [otHours, setOtHours] =
+    useState("");
+
 
   // =========================================
   // LOAD LOCAL STORAGE
   // =========================================
 
   useEffect(() => {
+
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+
+      const saved =
+        localStorage.getItem(
+          STORAGE_KEY
+        );
+
 
       if (saved) {
-        const parsed = JSON.parse(saved);
 
-        if (parsed.shifts) {
-          setShifts(parsed.shifts);
+        const parsed =
+          JSON.parse(saved);
+
+
+        // ==============================
+        // LOAD BULAN TERAKHIR DIPILIH
+        // ==============================
+
+        if (
+          parsed?.selectedMonth !==
+            undefined &&
+          parsed?.selectedMonth !==
+            null
+        ) {
+
+          setSelectedMonth(
+            Number(
+              parsed.selectedMonth
+            )
+          );
+
         }
 
-        if (parsed.otSambung) {
-          setOtSambung(parsed.otSambung);
+
+        // ==============================
+        // LOAD DATA 12 BULAN
+        // ==============================
+
+        if (parsed?.months) {
+
+          const emptyMonths =
+            createEmptyMonths();
+
+
+          Object.keys(
+            parsed.months
+          ).forEach(
+            (month) => {
+
+              emptyMonths[month] =
+                parsed.months[month];
+
+            }
+          );
+
+
+          setMonthData(
+            emptyMonths
+          );
+
         }
+
       }
+
     } catch (error) {
-      console.error("Gagal membaca data:", error);
+
+      console.error(
+        "Gagal membaca LocalStorage:",
+        error
+      );
+
     }
 
+
     setLoaded(true);
+
   }, []);
 
+
   // =========================================
-  // AUTO SAVE
+  // SAVE LOCAL STORAGE
   // =========================================
 
   useEffect(() => {
+
     if (!loaded) return;
 
+
     try {
+
       localStorage.setItem(
         STORAGE_KEY,
+
         JSON.stringify({
-          shifts,
-          otSambung,
+
+          selectedMonth,
+
+          months:
+            monthData,
+
         })
       );
+
     } catch (error) {
-      console.error("Gagal menyimpan data:", error);
+
+      console.error(
+        "Gagal menyimpan LocalStorage:",
+        error
+      );
+
     }
-  }, [shifts, otSambung, loaded]);
+
+  }, [
+    monthData,
+    selectedMonth,
+    loaded,
+  ]);
+
+
+  // =========================================
+  // TUKAR BULAN
+  // =========================================
+
+  function handleMonthChange(
+    value
+  ) {
+
+    const newMonth =
+      Number(value);
+
+
+    setSelectedMonth(
+      newMonth
+    );
+
+
+    // Tutup modal OT
+
+    setSelectedDay(null);
+
+    setOtType("");
+
+    setOtHours("");
+
+  }
+
 
   // =========================================
   // JUMLAH HARI BULAN
   // =========================================
 
-  const daysInMonth = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth() + 1,
-    0
-  ).getDate();
+  const daysInMonth =
+    new Date(
+      currentDate.getFullYear(),
+      selectedMonth + 1,
+      0
+    ).getDate();
+
 
   // =========================================
   // SENARAI HARI
   // =========================================
 
   const days = useMemo(() => {
-    return Array.from(
-      { length: daysInMonth },
-      (_, index) => {
-        const day = index + 1;
 
-        const date = new Date(
-          currentDate.getFullYear(),
-          currentDate.getMonth(),
-          day
-        );
+    const weekdays = [
+      "AHD",
+      "ISN",
+      "SEL",
+      "RAB",
+      "KHA",
+      "JUM",
+      "SAB",
+    ];
+
+
+    return Array.from(
+      {
+        length:
+          daysInMonth,
+      },
+
+      (_, index) => {
+
+        const day =
+          index + 1;
+
+
+        const date =
+          new Date(
+            currentDate.getFullYear(),
+            selectedMonth,
+            day
+          );
+
 
         return {
+
           day,
 
-          weekday: date.toLocaleDateString(
-            "ms-MY",
-            {
-              weekday: "long",
-            }
-          ),
+          weekday:
+            weekdays[
+              date.getDay()
+            ],
+
         };
+
       }
+
     );
-  }, [currentDate, daysInMonth]);
+
+  }, [
+    currentDate,
+    selectedMonth,
+    daysInMonth,
+  ]);
+
 
   // =========================================
-  // KIRAAN DATA
+  // KIRAAN
   // =========================================
 
-  const summary = useMemo(() => {
-    let normalDays = 0;
-    let phDays = 0;
+  const summary =
+    useMemo(() => {
 
-    let otNormal = 0;
-    let otPh = 0;
+      let normalDays = 0;
 
-    let elaun = 0;
+      let phDays = 0;
 
-    Object.entries(shifts).forEach(
-      ([day, shift]) => {
-        if (!shift) return;
+      let otNormal = 0;
 
-        const data = getShiftData(shift);
+      let otPh = 0;
 
-        // -----------------------------
-        // HARI NORMAL
-        // -----------------------------
+      let elaun = 0;
 
-        if (data.type === "NORMAL") {
-          normalDays++;
+
+      Object.entries(
+        shifts
+      ).forEach(
+        ([day, shift]) => {
+
+          if (!shift) return;
+
+
+          const data =
+            getShiftData(
+              shift
+            );
+
+
+          // ==============================
+          // HARI NORMAL
+          // ==============================
+
+          if (
+            data.type ===
+            "NORMAL"
+          ) {
+
+            normalDays++;
+
+          }
+
+
+          // ==============================
+          // HARI PH
+          // ==============================
+
+          if (
+            data.type ===
+            "PH"
+          ) {
+
+            phDays++;
+
+          }
+
+
+          // ==============================
+          // ELAUN
+          // ==============================
+
+          elaun +=
+            Number(
+              data.elaun
+            ) || 0;
+
+
+          // ==============================
+          // OT ASAS
+          // ==============================
+
+          const baseOt =
+            Number(
+              data.ot
+            ) || 0;
+
+
+          if (
+            data.type ===
+            "PH"
+          ) {
+
+            otPh +=
+              baseOt;
+
+          } else {
+
+            otNormal +=
+              baseOt;
+
+          }
+
+
+          // ==============================
+          // OT SAMBUNG
+          // ==============================
+
+          const extra =
+            otSambung[day];
+
+
+          if (!extra) return;
+
+
+          const rawHours =
+            String(
+              extra.hours ?? ""
+            ).trim();
+
+
+          if (
+            rawHours === ""
+          ) {
+
+            return;
+
+          }
+
+
+          const numericHours =
+            Number(
+              rawHours
+                .replace(
+                  ",",
+                  "."
+                )
+                .replace(
+                  /[jJ]/g,
+                  ""
+                )
+                .trim()
+            );
+
+
+          if (
+            Number.isNaN(
+              numericHours
+            )
+          ) {
+
+            return;
+
+          }
+
+
+          const extraType =
+            String(
+              extra.type ?? ""
+            )
+              .trim()
+              .toUpperCase();
+
+
+          const isPhDay =
+            data.type ===
+            "PH";
+
+
+          const isPhExtra =
+            extraType.includes(
+              "PH"
+            );
+
+
+          if (
+            isPhDay ||
+            isPhExtra
+          ) {
+
+            otPh +=
+              numericHours;
+
+          } else {
+
+            otNormal +=
+              numericHours;
+
+          }
+
         }
+      );
 
-        // -----------------------------
-        // HARI PH
-        // -----------------------------
 
-        if (data.type === "PH") {
-          phDays++;
-        }
+      return {
 
-        // -----------------------------
-        // ELAUN
-        // -----------------------------
+        normalDays,
 
-        elaun += Number(data.elaun) || 0;
+        phDays,
 
-        // -----------------------------
-        // OT ASAS
-        // -----------------------------
+        otNormal:
+          Number(
+            otNormal.toFixed(1)
+          ),
 
-        const baseOt = Number(data.ot) || 0;
+        otPh:
+          Number(
+            otPh.toFixed(1)
+          ),
 
-        if (data.type === "PH") {
-          otPh += baseOt;
-        } else {
-          otNormal += baseOt;
-        }
+        elaun,
 
-       // -----------------------------
-// OT SAMBUNG
-// -----------------------------
+      };
 
-const extra = otSambung[day];
+    }, [
+      shifts,
+      otSambung,
+    ]);
 
-if (extra) {
-  const rawHours = String(
-    extra.hours ?? ""
-  ).trim();
-
-  if (rawHours !== "") {
-    const numericHours = Number(
-      rawHours.replace(",", ".")
-    );
-
-    if (!Number.isNaN(numericHours)) {
-
-      const extraType = String(
-        extra.type ?? ""
-      )
-        .trim()
-        .toUpperCase();
-
-      // PH jika:
-      // 1. Syif hari tersebut ialah PH
-      // ATAU
-      // 2. User tulis PH dalam Jenis OT
-
-      const isPhDay =
-        data.type === "PH";
-
-      const isPhExtra =
-        extraType.includes("PH");
-
-      if (
-        isPhDay ||
-        isPhExtra
-      ) {
-        otPh += numericHours;
-      } else {
-        otNormal += numericHours;
-      }
-    }
-  }
-}
-      }
-    );
-
-    return {
-      normalDays,
-
-      phDays,
-
-      otNormal: Number(
-        otNormal.toFixed(1)
-      ),
-
-      otPh: Number(
-        otPh.toFixed(1)
-      ),
-
-      elaun,
-    };
-  }, [shifts, otSambung]);
 
   // =========================================
   // TUKAR SYIF
   // =========================================
 
-  function handleShiftChange(day, value) {
-    setShifts((prev) => ({
-      ...prev,
-      [day]: value,
-    }));
+  function handleShiftChange(
+    day,
+    value
+  ) {
+
+    setMonthData(
+      (prev) => ({
+
+        ...prev,
+
+        [selectedMonth]: {
+
+          ...(prev[
+            selectedMonth
+          ] || {
+
+            shifts: {},
+
+            otSambung: {},
+
+          }),
+
+
+          shifts: {
+
+            ...(
+              prev[
+                selectedMonth
+              ]?.shifts || {}
+            ),
+
+
+            [day]:
+              value,
+
+          },
+
+        },
+
+      })
+    );
+
   }
 
+
   // =========================================
-  // BUKA MODAL OT
+  // BUKA OT
   // =========================================
 
-  function openOtModal(day) {
-    setSelectedDay(day);
+  function openOtModal(
+    day
+  ) {
 
-    const saved = otSambung[day];
+    setSelectedDay(
+      day
+    );
+
+
+    const saved =
+      otSambung[day];
+
 
     if (saved) {
+
       setOtType(
-        String(saved.type ?? "")
+        String(
+          saved.type ??
+          ""
+        )
       );
+
 
       setOtHours(
-        String(saved.hours ?? "")
+        String(
+          saved.hours ??
+          ""
+        )
       );
+
     } else {
+
       setOtType("");
+
       setOtHours("");
+
     }
+
   }
 
+
   // =========================================
-  // TUTUP MODAL
+  // TUTUP OT
   // =========================================
 
   function closeOtModal() {
-    setSelectedDay(null);
+
+    setSelectedDay(
+      null
+    );
+
     setOtType("");
+
     setOtHours("");
+
   }
+
 
   // =========================================
   // SIMPAN OT SAMBUNG
   // =========================================
 
   function saveOtSambung() {
+
     if (
-      selectedDay === null ||
-      selectedDay === undefined
+      selectedDay ===
+        null ||
+      selectedDay ===
+        undefined
     ) {
+
       return;
+
     }
 
-    const cleanType = String(
-      otType ?? ""
-    ).trim();
 
-    const cleanHours = String(
-      otHours ?? ""
-    ).trim();
+    const cleanType =
+      String(
+        otType ?? ""
+      ).trim();
 
-    setOtSambung((prev) => ({
-      ...prev,
 
-      [selectedDay]: {
-        type: cleanType,
-        hours: cleanHours,
-      },
-    }));
+    const cleanHours =
+      String(
+        otHours ?? ""
+      ).trim();
+
+
+    setMonthData(
+      (prev) => ({
+
+        ...prev,
+
+
+        [selectedMonth]: {
+
+          ...(prev[
+            selectedMonth
+          ] || {
+
+            shifts: {},
+
+            otSambung: {},
+
+          }),
+
+
+          otSambung: {
+
+            ...(
+              prev[
+                selectedMonth
+              ]?.otSambung ||
+              {}
+            ),
+
+
+            [selectedDay]: {
+
+              type:
+                cleanType,
+
+              hours:
+                cleanHours,
+
+            },
+
+          },
+
+        },
+
+      })
+    );
+
 
     closeOtModal();
+
   }
 
+
   // =========================================
-  // RESET SEMUA
+  // RESET BULAN INI SAHAJA
   // =========================================
 
   function resetAllData() {
-    const confirmReset = window.confirm(
-      "RESET SEMUA DATA?\n\nSemua syif dan OT Sambung akan dipadam."
+
+    const confirmReset =
+      window.confirm(
+
+        `RESET DATA BULAN ${
+          MONTHS[selectedMonth]
+        }?
+
+Semua syif dan OT Sambung bulan ini akan dipadam.`
+
+      );
+
+
+    if (!confirmReset) {
+
+      return;
+
+    }
+
+
+    setMonthData(
+      (prev) => ({
+
+        ...prev,
+
+        [selectedMonth]: {
+
+          shifts: {},
+
+          otSambung: {},
+
+        },
+
+      })
+
     );
 
-    if (!confirmReset) return;
 
-    setShifts({});
-    setOtSambung({});
-
-    localStorage.removeItem(
-      STORAGE_KEY
+    setSelectedDay(
+      null
     );
+
+    setOtType("");
+
+    setOtHours("");
+
 
     alert(
-      "Semua data telah direset."
+      `Data bulan ${
+        MONTHS[selectedMonth]
+      } telah direset.`
     );
+
   }
+
 
   // =========================================
   // HARI MODAL
@@ -337,17 +809,22 @@ if (extra) {
 
   const selectedWeekday =
     selectedDay !== null
+
       ? days.find(
           (item) =>
-            item.day === selectedDay
+            item.day ===
+            selectedDay
         )?.weekday || ""
+
       : "";
+
 
   // =========================================
   // UI
   // =========================================
 
   return (
+
     <main
       className="
         min-h-screen
@@ -355,30 +832,98 @@ if (extra) {
         text-white
       "
     >
+
       <Header
-        summary={summary}
-        onReset={resetAllData}
+
+        summary={
+          summary
+        }
+
+        onReset={
+          resetAllData
+        }
+
+        months={
+          MONTHS
+        }
+
+        selectedMonth={
+          selectedMonth
+        }
+
+        onMonthChange={
+          handleMonthChange
+        }
+
       />
+
 
       <Calendar
-        currentDate={currentDate}
-        days={days}
-        shifts={shifts}
-        otSambung={otSambung}
-        onShiftChange={handleShiftChange}
-        onOpenOt={openOtModal}
+
+        currentDate={
+          currentDate
+        }
+
+        days={
+          days
+        }
+
+        shifts={
+          shifts
+        }
+
+        otSambung={
+          otSambung
+        }
+
+        onShiftChange={
+          handleShiftChange
+        }
+
+        onOpenOt={
+          openOtModal
+        }
+
       />
 
+
       <OtModal
-        selectedDay={selectedDay}
-        weekday={selectedWeekday}
-        otType={otType}
-        otHours={otHours}
-        onTypeChange={setOtType}
-        onHoursChange={setOtHours}
-        onClose={closeOtModal}
-        onSave={saveOtSambung}
+
+        selectedDay={
+          selectedDay
+        }
+
+        weekday={
+          selectedWeekday
+        }
+
+        otType={
+          otType
+        }
+
+        otHours={
+          otHours
+        }
+
+        onTypeChange={
+          setOtType
+        }
+
+        onHoursChange={
+          setOtHours
+        }
+
+        onClose={
+          closeOtModal
+        }
+
+        onSave={
+          saveOtSambung
+        }
+
       />
+
     </main>
+
   );
 }
