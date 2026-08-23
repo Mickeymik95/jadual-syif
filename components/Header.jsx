@@ -42,13 +42,12 @@ export default function Header({
           text-center
           text-base
           font-black
-          uppercase
           tracking-[0.1em]
           text-blue-400
           drop-shadow-[0_0_5px_rgba(59,130,246,0.35)]
         "
       >
-        ROSTER / JADUAL SYIF
+        ROSTER/SYIF by PB NAZMI
       </h1>
 
 

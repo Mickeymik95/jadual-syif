@@ -860,10 +860,17 @@ Semua syif dan OT Sambung bulan ini akan dipadam.`
 
       <Calendar
 
-        currentDate={
-          currentDate
-        }
+  currentDate={
+    currentDate
+  }
 
+  selectedMonth={
+    selectedMonth
+  }
+
+  days={
+    days
+  }
         days={
           days
         }

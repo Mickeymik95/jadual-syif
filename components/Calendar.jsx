@@ -19,11 +19,19 @@ export default function Calendar({
     month: "long",
   });
 
-  const year =
-    currentDate.getFullYear();
+  const year = currentDate.getFullYear();
 
-  const daysInMonth =
-    days.length;
+  const daysInMonth = days.length;
+
+  // =========================================
+  // TARIKH HARI INI
+  // =========================================
+
+  const today = new Date();
+
+  const todayYear = today.getFullYear();
+  const todayMonth = today.getMonth();
+  const todayDay = today.getDate();
 
   return (
     <section className="mx-auto max-w-md px-1 py-1">
@@ -82,7 +90,7 @@ export default function Calendar({
         <div
           className="
             grid
-            grid-cols-[68px_minmax(0,1fr)_38px_48px_30px]
+            grid-cols-[88px_minmax(0,1fr)_42px_52px_32px]
             items-center
             gap-1
             border-b
@@ -118,17 +126,31 @@ export default function Calendar({
 
         <div>
 
-          {days.map((item) => (
-            <DayRow
-              key={item.day}
-              day={item.day}
-              weekday={item.weekday}
-              shift={shifts[item.day] || ""}
-              extra={otSambung[item.day]}
-              onShiftChange={onShiftChange}
-              onOpenOt={onOpenOt}
-            />
-          ))}
+          {days.map((item) => {
+
+            // =================================
+            // SEMAK HARI INI
+            // =================================
+
+            const isToday =
+              todayYear === currentDate.getFullYear() &&
+              todayMonth === selectedMonth &&
+              todayDay === item.day;
+
+            return (
+              <DayRow
+                key={item.day}
+                day={item.day}
+                weekday={item.weekday}
+                shift={shifts[item.day] || ""}
+                extra={otSambung[item.day]}
+                isToday={isToday}
+                onShiftChange={onShiftChange}
+                onOpenOt={onOpenOt}
+              />
+            );
+
+          })}
 
         </div>
 
