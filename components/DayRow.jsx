@@ -1,485 +1,500 @@
-"use client";
+  "use client";
 
-import {
-  getShiftData,
-  SHIFT_OPTIONS,
-} from "../data/shifts";
+  import {
+    getShiftData,
+    SHIFT_OPTIONS,
+  } from "../data/shifts";
 
-export default function DayRow({
-  day,
-  weekday,
-  shift,
-  extra,
-  onShiftChange,
-  onOpenOt,
-}) {
-  const data = getShiftData(shift);
+  export default function DayRow({
+    day,
+    weekday,
+    shift,
+    extra,
+    onShiftChange,
+    onOpenOt,
+  }) {
+    const data = getShiftData(shift);
 
-  // =========================================
-  // OT SAMBUNG
-  // =========================================
+    // =========================================
+    // OT SAMBUNG
+    // =========================================
 
-  const rawExtraHours = String(
-    extra?.hours ?? ""
-  ).trim();
+    const rawExtraHours = String(
+      extra?.hours ?? ""
+    ).trim();
 
-  const numericExtraHours =
-    rawExtraHours === ""
-      ? 0
-      : Number(
-          rawExtraHours
-            .replace(",", ".")
-            .replace(/[jJ]/g, "")
-            .trim()
-        );
+    const numericExtraHours =
+      rawExtraHours === ""
+        ? 0
+        : Number(
+            rawExtraHours
+              .replace(",", ".")
+              .replace(/[jJ]/g, "")
+              .trim()
+          );
 
-  const validExtraHours =
-    Number.isNaN(numericExtraHours)
-      ? 0
-      : numericExtraHours;
+    const validExtraHours =
+      Number.isNaN(numericExtraHours)
+        ? 0
+        : numericExtraHours;
 
-  const totalOt =
-    (Number(data.ot) || 0) +
-    validExtraHours;
+    const totalOt =
+      (Number(data.ot) || 0) +
+      validExtraHours;
 
-  // =========================================
-  // SEMAK ADA OT SAMBUNG
-  // =========================================
 
-  const hasExtra =
-    extra &&
-    (
-      String(extra.type ?? "").trim() !== "" ||
-      String(extra.hours ?? "").trim() !== ""
-    );
+    // =========================================
+    // SEMAK ADA OT SAMBUNG
+    // =========================================
 
-  // =========================================
-  // WARNA TARIKH + HARI
-  // =========================================
+    const hasExtra =
+      !!extra &&
+      (
+        String(extra.type ?? "").trim() !== "" ||
+        String(extra.hours ?? "").trim() !== ""
+      );
 
-  function getDateBoxStyle() {
-    // DS
-    if (shift === "DS") {
-      return "bg-yellow-600 border-yellow-200 text-slate-950";
-    }
 
-    // NS
-    if (shift === "NS") {
-      return "bg-slate-600 border-slate-300 text-white";
-    }
+    // =========================================
+    // WARNA TARIKH + HARI
+    // =========================================
 
-    // OD DS
-    if (shift === "OD DS") {
-      return "bg-yellow-300 border-yellow-200 text-slate-950";
-    }
+    function getDateBoxStyle() {
 
-    // OD NS
-    if (shift === "OD NS") {
-      return "bg-slate-400 border-slate-400 text-white";
-    }
+      // DS
+      if (shift === "DS") {
+        return "bg-yellow-600 border-yellow-200 text-slate-950";
+      }
 
-    // PH DS
-    if (shift === "PH DS") {
-      return "bg-purple-500 border-purple-200 text-white";
-    }
+      // NS
+      if (shift === "NS") {
+        return "bg-slate-600 border-slate-300 text-white";
+      }
 
-    // PH NS
-    if (shift === "PH NS") {
-      return "bg-purple-600 border-purple-300 text-white";
-    }
+      // OD DS
+      if (shift === "OD DS") {
+        return "bg-yellow-300 border-yellow-200 text-slate-950";
+      }
 
-    // CUTI / AL
-    if (shift === "CUTI/AL") {
-      return "bg-blue-500 border-blue-300 text-white";
-    }
+      // OD NS
+      if (shift === "OD NS") {
+        return "bg-slate-400 border-slate-400 text-white";
+      }
 
-    // MC
-    if (shift === "MC") {
-      return "bg-red-600 border-red-300 text-white";
-    }
+      // PH DS
+      if (shift === "PH DS") {
+        return "bg-purple-500 border-purple-200 text-white";
+      }
 
-    // OFF / REST
-    if (
-      shift === "OFF" ||
-      shift === "REST"
-    ) {
+      // PH NS
+      if (shift === "PH NS") {
+        return "bg-purple-600 border-purple-300 text-white";
+      }
+
+      // CUTI / AL
+      if (shift === "CUTI/AL") {
+        return "bg-blue-500 border-blue-300 text-white";
+      }
+
+      // MC
+      if (shift === "MC") {
+        return "bg-red-600 border-red-300 text-white";
+      }
+
+      // OFF / REST
+      if (
+        shift === "OFF" ||
+        shift === "REST"
+      ) {
+        return "bg-slate-900 border-slate-800 text-slate-300";
+      }
+
+      // KOSONG
       return "bg-slate-900 border-slate-800 text-slate-300";
     }
 
-    // KOSONG
-    return "bg-slate-900 border-slate-800 text-slate-300";
-  }
 
-  // =========================================
-  // SAIZ
-  // =========================================
-  //
-  // TARIKH SENTIASA 38px
-  //
-  // TIADA OT:
-  //     SYIF = 38px
-  //
-  // ADA OT:
-  //     OT   = 14px
-  //     SYIF = 24px
-  //
-  // JUMLAH = 38px
-  // =========================================
+    // =========================================
+    // SAIZ TETAP
+    // =========================================
+    //
+    // KESELURUHAN BARIS = 38px
+    //
+    // TIADA OT:
+    //   SYIF = 38px
+    //
+    // ADA OT:
+    //   OT   = 14px
+    //   SYIF = 24px
+    //
+    // TARIKH SENTIASA = 38px
+    //
+    // =========================================
 
-  const shiftHeightClass = hasExtra
-    ? "h-[24px]"
-    : "h-[38px]";
-
-  // Nilai OT / Elaun perlu turun sedikit
-  // apabila terdapat OT Sambung supaya
-  // kedudukannya selari dengan SYIF.
-
-  const valuePaddingClass = hasExtra
-    ? "pt-[14px]"
-    : "pt-[12px]";
-
-  // Button juga ikut tinggi syif.
-  const buttonHeightClass = hasExtra
-    ? "h-[24px]"
-    : "h-[38px]";
-
-  // =========================================
-  // UI
-  // =========================================
-
-  return (
-    <div
-      className="
-        grid
-        grid-cols-[88px_minmax(0,1fr)_42px_52px_32px]
-        items-start
-        gap-1
-        border-b
-        border-slate-800
-        px-1
-        py-0.5
-      "
-    >
-
-      {/* =====================================
-          TARIKH + HARI
-          SENTIASA 38px
-          ===================================== */}
-
-      <div
-        className={`
-          flex
-          min-h-[38px]
-          h-[38px]
-          flex-row
-          items-center
-          gap-1.5
-          rounded-md
-          border-l-2
-          px-2
-          ${getDateBoxStyle()}
-        `}
-      >
-
-        {/* TARIKH */}
-
-        <div
-          className="
-            text-[14px]
-            font-black
-            leading-none
-          "
-        >
-          {String(day).padStart(2, "0")}
-        </div>
+    const shiftHeightClass = hasExtra
+      ? "h-[24px]"
+      : "h-[38px]";
 
 
-        {/* HARI */}
+    // =========================================
+    // UI
+    // =========================================
 
-        <div
-          className="
-            truncate
-            text-[10px]
-            font-black
-            uppercase
-            leading-none
-          "
-        >
-          {weekday}
-        </div>
-
-      </div>
-
-
-      {/* =====================================
-          SYIF + OT SAMBUNG
-          JUMLAH TINGGI SENTIASA 38px
-          ===================================== */}
-
+    return (
       <div
         className="
-          min-w-0
-          pl-1
+          grid
+          grid-cols-[88px_minmax(0,1fr)_42px_52px_32px]
+          items-start
+          gap-1
+          h-[38px]
+          border-b
+          border-slate-800
+          px-1
+          py-0.5
         "
       >
 
-        {/* =================================
-            OT SAMBUNG
-            ================================= */}
+        {/* =====================================
+            TARIKH + HARI
+            SENTIASA 38px
+            ===================================== */}
 
-        {hasExtra ? (
+        <div
+          className={`
+            flex
+            h-[38px]
+            min-h-[38px]
+            flex-row
+            items-center
+            gap-1.5
+            rounded-md
+            border-l-2
+            px-2
+            ${getDateBoxStyle()}
+          `}
+        >
+
+          {/* TARIKH */}
 
           <div
             className="
-              h-[14px]
-              overflow-hidden
-              pl-2
+              text-[14px]
+              font-black
+              leading-none
             "
           >
-
-            <button
-              type="button"
-              onClick={() =>
-                onOpenOt(day)
-              }
-              className="
-                block
-                max-w-full
-                truncate
-                text-left
-                text-[8px]
-                font-black
-                uppercase
-                leading-[14px]
-                text-red-500
-                hover:text-red-300
-              "
-              title="Edit OT Sambung"
-            >
-
-              {String(
-                extra.type ||
-                "OT SAMBUNG"
-              )}
-
-              {String(
-                extra.hours ?? ""
-              ).trim() !== "" && (
-                <>
-                  {" • "}
-                  {String(
-                    extra.hours
-                  ).trim()}
-                  J
-                </>
-              )}
-
-            </button>
-
+            {String(day).padStart(2, "0")}
           </div>
 
-        ) : (
 
-          // Tiada OT → tiada ruang tambahan
-          <div className="h-0" />
+          {/* HARI */}
 
-        )}
+          <div
+            className="
+              truncate
+              text-[10px]
+              font-black
+              uppercase
+              leading-none
+            "
+          >
+            {weekday}
+          </div>
+
+        </div>
 
 
-        {/* =================================
-            SYIF
-            ================================= */}
+        {/* =====================================
+            SYIF + OT SAMBUNG
+            JUMLAH RUANG = 38px
+            ===================================== */}
 
-        <select
-          value={shift}
-          onChange={(e) =>
-            onShiftChange(
-              day,
-              e.target.value
-            )
-          }
-          className={`
-            ${shiftHeightClass}
-            w-full
+        <div
+          className="
+            relative
             min-w-0
-            rounded-md
-            border
-            border-slate-700
-            bg-slate-950
-            px-1
-            text-[9px]
-            font-bold
-            text-slate-200
-            outline-none
-            focus:border-blue-500
-          `}
+            h-[38px]
+          "
         >
 
-          <option value="">
-            PILIH SYIF
-          </option>
+          {/* =================================
+              OT SAMBUNG
+              TINGGI = 14px
+              ================================= */}
 
-          {SHIFT_OPTIONS.map(
-            (option, index) => {
+          {hasExtra && (
+            <div
+              className="
+                absolute
+                left-0
+                right-0
+                top-0
+                h-[14px]
+                overflow-hidden
+                pl-2
+              "
+            >
 
-              const optionValue =
-                typeof option === "object"
-                  ? option.value
-                  : option;
+              <button
+                type="button"
+                onClick={() =>
+                  onOpenOt(day)
+                }
+                className="
+                  block
+                  max-w-full
+                  truncate
+                  text-left
+                  text-[8px]
+                  font-black
+                  uppercase
+                  leading-[14px]
+                  text-red-500
+                  hover:text-red-300
+                "
+                title="Edit OT Sambung"
+              >
 
-              const optionLabel =
-                typeof option === "object"
-                  ? option.label
-                  : option;
+                {String(
+                  extra.type ||
+                  "OT SAMBUNG"
+                )}
 
-              return (
-                <option
-                  key={
-                    optionValue ??
-                    `shift-${index}`
-                  }
-                  value={
-                    optionValue ?? ""
-                  }
-                >
-                  {optionLabel}
-                </option>
-              );
-            }
+                {String(
+                  extra.hours ?? ""
+                ).trim() !== "" && (
+                  <>
+                    {" • "}
+                    {String(
+                      extra.hours
+                    ).trim()}
+                    J
+                  </>
+                )}
+
+              </button>
+
+            </div>
           )}
 
-        </select>
 
-      </div>
+          {/* =================================
+              SYIF
+              =================================
+              
+              TIADA OT:
+                top 0
+                tinggi 38px
 
+              ADA OT:
+                top 14px
+                tinggi 24px
 
-      {/* =====================================
-          JUMLAH OT
-          ===================================== */}
+              JUMLAH SENTIASA 38px
+              ================================= */}
 
-      <div
-        className={`
-          text-center
-          ${valuePaddingClass}
-        `}
-      >
-
-        {totalOt !== 0 ? (
-
-          <span
+          <select
+            value={shift}
+            onChange={(e) =>
+              onShiftChange(
+                day,
+                e.target.value
+              )
+            }
             className={`
-              text-[10px]
-              font-black
-              ${
-                totalOt < 0
-                  ? "text-red-400"
-                  : "text-blue-200"
-              }
+              absolute
+              left-0
+              right-0
+              top-0
+              ${hasExtra ? "top-[14px]" : ""}
+              ${shiftHeightClass}
+              w-full
+              min-w-0
+              rounded-md
+              border
+              border-slate-700
+              bg-slate-950
+              px-1
+              text-[9px]
+              font-bold
+              text-slate-200
+              outline-none
+              focus:border-blue-500
             `}
           >
-            {Number(
-              totalOt.toFixed(1)
-            )}J
-          </span>
 
-        ) : (
+            <option value="">
+              PILIH SYIF
+            </option>
 
-          <span
-            className="
-              text-[10px]
-              text-slate-700
-            "
-          >
-            —
-          </span>
+            {SHIFT_OPTIONS.map(
+              (option, index) => {
 
-        )}
+                const optionValue =
+                  typeof option === "object"
+                    ? option.value
+                    : option;
 
-      </div>
+                const optionLabel =
+                  typeof option === "object"
+                    ? option.label
+                    : option;
 
+                return (
+                  <option
+                    key={
+                      optionValue ??
+                      `shift-${index}`
+                    }
+                    value={
+                      optionValue ?? ""
+                    }
+                  >
+                    {optionLabel}
+                  </option>
+                );
+              }
+            )}
 
-      {/* =====================================
-          ELAUN
-          ===================================== */}
+          </select>
 
-      <div
-        className={`
-          text-center
-          ${valuePaddingClass}
-        `}
-      >
-
-        {data.elaun > 0 ? (
-
-          <span
-            className="
-              text-[10px]
-              font-black
-              text-blue-200
-            "
-          >
-            RM{data.elaun}
-          </span>
-
-        ) : (
-
-          <span
-            className="
-              text-[10px]
-              text-slate-700
-            "
-          >
-            —
-          </span>
-
-        )}
-
-      </div>
+        </div>
 
 
-      {/* =====================================
-          BUTTON OT SAMBUNG
-          ===================================== */}
+        {/* =====================================
+            JUMLAH OT
+            SENTIASA SEJAJAR DALAM 38px
+            ===================================== */}
 
-      <div
-        className={`
-          flex
-          justify-center
-          ${
-            hasExtra
-              ? "pt-[14px]"
-              : ""
-          }
-        `}
-      >
-
-        <button
-          type="button"
-          onClick={() =>
-            onOpenOt(day)
-          }
-          className={`
+        <div
+          className="
             flex
-            ${buttonHeightClass}
-            w-full
+            h-[38px]
             items-center
             justify-center
-            rounded-md
-            border
-            border-blue-800
-            bg-blue-950
-            text-[12px]
-            font-black
-            text-blue-200
-            hover:bg-blue-800
-          `}
-          title="OT Sambung"
+            text-center
+          "
         >
-          ⚙️
-        </button>
+
+          {totalOt !== 0 ? (
+
+            <span
+              className={`
+                text-[10px]
+                font-black
+                ${
+                  totalOt < 0
+                    ? "text-red-400"
+                    : "text-blue-200"
+                }
+              `}
+            >
+              {Number(
+                totalOt.toFixed(1)
+              )}J
+            </span>
+
+          ) : (
+
+            <span
+              className="
+                text-[10px]
+                text-slate-700
+              "
+            >
+              —
+            </span>
+
+          )}
+
+        </div>
+
+
+        {/* =====================================
+            ELAUN
+            SENTIASA SEJAJAR DALAM 38px
+            ===================================== */}
+
+        <div
+          className="
+            flex
+            h-[38px]
+            items-center
+            justify-center
+            text-center
+          "
+        >
+
+          {data.elaun > 0 ? (
+
+            <span
+              className="
+                text-[10px]
+                font-black
+                text-blue-200
+              "
+            >
+              RM{data.elaun}
+            </span>
+
+          ) : (
+
+            <span
+              className="
+                text-[10px]
+                text-slate-700
+              "
+            >
+              —
+            </span>
+
+          )}
+
+        </div>
+
+
+        {/* =====================================
+            BUTTON OT SAMBUNG
+            SENTIASA 38px
+            ===================================== */}
+
+        <div
+          className="
+            flex
+            h-[38px]
+            items-center
+            justify-center
+          "
+        >
+
+          <button
+            type="button"
+            onClick={() =>
+              onOpenOt(day)
+            }
+            className="
+              flex
+              h-[38px]
+              w-full
+              items-center
+              justify-center
+              rounded-md
+              border
+              border-blue-800
+              bg-blue-950
+              text-[12px]
+              font-black
+              text-blue-200
+              hover:bg-blue-800
+            "
+            title="OT Sambung"
+          >
+            ⚙️
+          </button>
+
+        </div>
 
       </div>
-
-    </div>
-  );
-}
+    );
+  }
