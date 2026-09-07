@@ -16,12 +16,20 @@ export const SHIFT_OPTIONS = [
     label: "KERJA OD N/S",
   },
   {
+    value: "OFF",
+    label: "OFF DAY",
+  },
+  {
+    value: "REST",
+    label: "REST DAY",
+  },
+  {
     value: "PH DS",
-    label: "KERJA PH D/S",
+    label: "PH D/S",
   },
   {
     value: "PH NS",
-    label: "KERJA PH N/S",
+    label: "PH N/S",
   },
   {
     value: "CUTI/AL",
@@ -30,14 +38,6 @@ export const SHIFT_OPTIONS = [
   {
     value: "MC",
     label: "MC",
-  },
-  {
-    value: "OFF",
-    label: "OFF",
-  },
-  {
-    value: "REST",
-    label: "REST",
   },
 ];
 

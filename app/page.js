@@ -871,9 +871,6 @@ Semua syif dan OT Sambung bulan ini akan dipadam.`
   days={
     days
   }
-        days={
-          days
-        }
 
         shifts={
           shifts
