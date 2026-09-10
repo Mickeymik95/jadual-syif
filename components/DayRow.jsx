@@ -447,7 +447,7 @@ export default function DayRow({
           "
           title="OT Sambung"
         >
-         OT⏰
+         OT
         </button>
 
       </div>
