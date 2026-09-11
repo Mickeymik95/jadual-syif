@@ -3,6 +3,7 @@
 export default function Header({
   summary,
   onReset,
+  onOpenSalary,
   months,
   selectedMonth,
   onMonthChange,
@@ -293,8 +294,8 @@ export default function Header({
               ELAUN SYIF
             </div>
 
-            <div className="text-[11px] font-black">
-              RM {summary.elaun}
+            <div className="text-[11px] font-black text-white">
+              RM {Number(summary.elaun || 0).toFixed(2)}
             </div>
 
           </div>
@@ -303,32 +304,70 @@ export default function Header({
 
 
         {/* =====================================
-            RESET BULAN INI
+            BUTANG KIRA GAJI + RESET
             ===================================== */}
 
-        <button
-          type="button"
-          onClick={onReset}
+        <div
           className="
             mt-1
-            h-7
-            w-full
-            rounded-md
-            border
-            border-red-900/60
-            bg-red-950/40
-            text-[12px]
-            font-black
-            uppercase
-            tracking-wide
-            text-red-400
-            transition
-            hover:bg-red-900/50
-            hover:text-red-200
+            grid
+            grid-cols-2
+            gap-1
           "
         >
-          🗑 RESET BULAN INI
-        </button>
+
+          {/* KIRA GAJI */}
+
+          <button
+            type="button"
+            onClick={onOpenSalary}
+            className="
+              h-7
+              w-full
+              rounded-md
+              border
+              border-emerald-800
+              bg-emerald-950/50
+              text-[11px]
+              font-black
+              uppercase
+              tracking-wide
+              text-emerald-400
+              transition
+              hover:bg-emerald-900/60
+              hover:text-emerald-200
+            "
+          >
+            💰 KIRA GAJI
+          </button>
+
+
+          {/* RESET */}
+
+          <button
+            type="button"
+            onClick={onReset}
+            className="
+              h-7
+              w-full
+              rounded-md
+              border
+              border-red-900/60
+              bg-red-950/40
+              text-[11px]
+              font-black
+              uppercase
+              tracking-wide
+              text-red-400
+              transition
+              hover:bg-red-900/50
+              hover:text-red-200
+            "
+          >
+            🗑 RESET
+          </button>
+
+        </div>
 
       </div>
 

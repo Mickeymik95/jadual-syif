@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import Header from "../components/Header";
 import Calendar from "../components/Calendar";
 import OtModal from "../components/OtModal";
+import SalaryModal from "../components/SalaryModal";
 
 import { getShiftData } from "../data/shifts";
 
@@ -111,6 +112,14 @@ export default function Home() {
 
   const [otHours, setOtHours] =
     useState("");
+
+
+  // =========================================
+  // MODAL KIRA GAJI
+  // =========================================
+
+  const [salaryModalOpen, setSalaryModalOpen] =
+    useState(false);
 
 
   // =========================================
@@ -539,7 +548,11 @@ export default function Home() {
             otPh.toFixed(1)
           ),
 
-        elaun,
+        elaun:
+
+          Number(
+            elaun.toFixed(2)
+          ),
 
       };
 
@@ -843,6 +856,13 @@ Semua syif dan OT Sambung bulan ini akan dipadam.`
           resetAllData
         }
 
+        onOpenSalary={
+          () =>
+            setSalaryModalOpen(
+              true
+            )
+        }
+
         months={
           MONTHS
         }
@@ -860,17 +880,17 @@ Semua syif dan OT Sambung bulan ini akan dipadam.`
 
       <Calendar
 
-  currentDate={
-    currentDate
-  }
+        currentDate={
+          currentDate
+        }
 
-  selectedMonth={
-    selectedMonth
-  }
+        selectedMonth={
+          selectedMonth
+        }
 
-  days={
-    days
-  }
+        days={
+          days
+        }
 
         shifts={
           shifts
@@ -927,7 +947,32 @@ Semua syif dan OT Sambung bulan ini akan dipadam.`
 
       />
 
+
+      {/* =====================================
+          MODAL KIRA GAJI
+      ===================================== */}
+
+      <SalaryModal
+
+        open={
+          salaryModalOpen
+        }
+
+        onClose={
+          () =>
+            setSalaryModalOpen(
+              false
+            )
+        }
+
+        summary={
+          summary
+        }
+
+      />
+
     </main>
 
   );
+
 }
