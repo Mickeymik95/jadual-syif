@@ -338,7 +338,7 @@ export default function Header({
               hover:text-emerald-200
             "
           >
-            💰 KIRA GAJI
+            💰 ANGGARAN GAJI
           </button>
 
 
