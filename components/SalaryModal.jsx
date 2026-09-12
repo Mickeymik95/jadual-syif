@@ -599,7 +599,7 @@ export default function SalaryModal({
                 font-black
                 uppercase
                 tracking-widest
-                text-blue-300
+                text-red-300
               "
             >
               GAJI KASAR
@@ -610,7 +610,7 @@ export default function SalaryModal({
                 mt-0.5
                 text-2xl
                 font-black
-                text-red
+                text-white
               "
             >
               {money(gajiKasar)}
