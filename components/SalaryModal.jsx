@@ -610,7 +610,7 @@ export default function SalaryModal({
                 mt-0.5
                 text-2xl
                 font-black
-                text-white
+                text-red
               "
             >
               {money(gajiKasar)}
