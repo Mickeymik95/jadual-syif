@@ -364,7 +364,7 @@ export default function Header({
               hover:text-red-200
             "
           >
-            🗑 RESET
+            🗑 RESET SYIF
           </button>
 
         </div>
