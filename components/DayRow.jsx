@@ -269,6 +269,7 @@ export default function DayRow({
           }
           className={`
             absolute
+            mb-1.5
             left-0
             right-0
             ${hasExtra ? "top-[14px]" : "top-0"}
@@ -432,7 +433,7 @@ export default function DayRow({
           onClick={() => onOpenOt(day)}
           className="
             flex
-            mb-1
+            mb-1.5
             h-[38px]
             w-full
             items-center
