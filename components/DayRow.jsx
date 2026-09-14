@@ -432,6 +432,7 @@ export default function DayRow({
           onClick={() => onOpenOt(day)}
           className="
             flex
+            mb-1
             h-[38px]
             w-full
             items-center
@@ -442,7 +443,7 @@ export default function DayRow({
             bg-blue-950
             text-[12px]
             font-black
-            text-blue-200
+            text-white-200
             hover:bg-blue-800
           "
           title="OT Sambung"
