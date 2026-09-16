@@ -83,7 +83,7 @@ export default function DayRow({
     }
 
     if (shift === "PH NS") {
-      return "bg-purple-600 border-purple-300 text-white";
+      return "bg-purple-900 border-purple-300 text-white";
     }
 
     if (shift === "CUTI/AL") {
@@ -98,7 +98,7 @@ export default function DayRow({
       shift === "OFF" ||
       shift === "REST"
     ) {
-      return "";
+      return "bg-orange-800 border-slate-900 text-slate-900";
     }
 
     return "bg-slate-900 border-slate-800 text-slate-300";
@@ -197,7 +197,7 @@ export default function DayRow({
           relative
           min-w-0
           h-[38px]
-          mb-1.5
+          mb-2
         "
       >
 
@@ -270,7 +270,7 @@ export default function DayRow({
           }
           className={`
             absolute
-            mb-1.5
+            mb-2
             left-0
             right-0
             ${hasExtra ? "top-[14px]" : "top-0"}
