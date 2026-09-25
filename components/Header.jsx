@@ -137,7 +137,7 @@ export default function Header({
               KERJA NORMAL
             </div>
 
-            <div className="text-[11px] font-black text-white">
+            <div className="text-[11px] font-black text-blue-300">
               {summary.normalDays} Hari
             </div>
 
@@ -161,7 +161,7 @@ export default function Header({
               KERJA PH
             </div>
 
-            <div className="text-[11px] font-black text-white">
+            <div className="text-[11px] font-black text-blue-300">
               {summary.phDays} Hari
             </div>
 
@@ -205,11 +205,11 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               OT PH
             </div>
 
-            <div className="text-[11px] font-black text-purple-300">
+            <div className="text-[11px] font-black text-blue-300">
               {summary.otPh} Jam
             </div>
 
@@ -244,7 +244,7 @@ export default function Header({
                   whitespace-nowrap
                   text-xs
                   font-black
-                  text-blue-200
+                  text-blue-300
                 "
               >
                 {jumlahOtDisplay} Jam
