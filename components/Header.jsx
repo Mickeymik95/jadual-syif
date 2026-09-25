@@ -133,7 +133,7 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-white-500">
+            <div className="text-[7px] font-bold text-white-500">
               KERJA NORMAL
             </div>
 
@@ -157,7 +157,7 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               KERJA PH
             </div>
 
@@ -181,7 +181,7 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               OT NORMAL
             </div>
 
@@ -233,7 +233,7 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-400">
+            <div className="text-[7px] font-bold text-white-400">
               JUMLAH OT
             </div>
 
@@ -290,7 +290,7 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               ELAUN SYIF
             </div>
 
