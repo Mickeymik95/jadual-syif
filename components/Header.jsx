@@ -244,7 +244,7 @@ export default function Header({
                   whitespace-nowrap
                   text-xs
                   font-black
-                  text-purple-300
+                  text-slate-300
                 "
               >
                 {jumlahOtDisplay} Jam
