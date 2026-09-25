@@ -244,7 +244,7 @@ export default function Header({
                   whitespace-nowrap
                   text-xs
                   font-black
-                  text-blue-300
+                  text-purple-300
                 "
               >
                 {jumlahOtDisplay} Jam
@@ -294,7 +294,7 @@ export default function Header({
               ELAUN SYIF
             </div>
 
-            <div className="text-[11px] font-black text-white">
+            <div className="text-[11px] font-black text-blue-300">
               RM {Number(summary.elaun || 0).toFixed(2)}
             </div>
 
