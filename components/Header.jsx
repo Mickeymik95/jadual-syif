@@ -133,7 +133,7 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[6px] font-bold text-white-500">
               KERJA NORMAL
             </div>
 
