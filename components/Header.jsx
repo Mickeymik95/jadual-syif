@@ -85,7 +85,7 @@ export default function Header({
     <option
       key={month}
       value={index}
-      className="bg-slate-900 text-cyan-300"
+      className="bg-slate-900 text-white-300"
     >
       {month}
     </option>
