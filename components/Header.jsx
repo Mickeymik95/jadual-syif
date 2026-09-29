@@ -58,41 +58,39 @@ export default function Header({
 
       <div className="mb-1">
 
-        <select
-          value={selectedMonth}
-          onChange={(e) =>
-            onMonthChange(e.target.value)
-          }
-          className="
-            h-7
-            w-full
-            rounded-md
-            border
-            border-blue-800
-            bg-slate-900
-            px-2
-            text-[11px]
-            font-black
-            uppercase
-            tracking-wide
-            text-blue-200
-            outline-none
-            focus:border-blue-400
-          "
-        >
-
-          {months.map(
-            (month, index) => (
-              <option
-                key={month}
-                value={index}
-              >
-                {month}
-              </option>
-            )
-          )}
-
-        </select>
+       <select
+  value={selectedMonth}
+  onChange={(e) => onMonthChange(e.target.value)}
+  className="
+    h-7
+    w-full
+    rounded-md
+    border
+    border-blue-400
+    bg-slate-900
+    px-2
+    text-[11px]
+    font-black
+    uppercase
+    tracking-wide
+    text-cyan-300
+    outline-none
+    animate-pulse
+    shadow-[0_0_8px_rgba(34,211,238,0.5)]
+    focus:border-cyan-300
+    focus:shadow-[0_0_12px_rgba(34,211,238,0.8)]
+  "
+>
+  {months.map((month, index) => (
+    <option
+      key={month}
+      value={index}
+      className="bg-slate-900 text-cyan-300"
+    >
+      {month}
+    </option>
+  ))}
+</select>
 
       </div>
 
