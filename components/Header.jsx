@@ -58,41 +58,39 @@ export default function Header({
 
       <div className="mb-1">
 
-        <select
-          value={selectedMonth}
-          onChange={(e) =>
-            onMonthChange(e.target.value)
-          }
-          className="
-            h-7
-            w-full
-            rounded-md
-            border
-            border-blue-800
-            bg-slate-900
-            px-2
-            text-[11px]
-            font-black
-            uppercase
-            tracking-wide
-            text-blue-200
-            outline-none
-            focus:border-blue-400
-          "
-        >
-
-          {months.map(
-            (month, index) => (
-              <option
-                key={month}
-                value={index}
-              >
-                {month}
-              </option>
-            )
-          )}
-
-        </select>
+       <select
+  value={selectedMonth}
+  onChange={(e) => onMonthChange(e.target.value)}
+  className="
+    h-7
+    w-full
+    rounded-md
+    border
+    border-blue-400
+    bg-slate-900
+    px-2
+    text-[11px]
+    font-black
+    uppercase
+    tracking-wide
+    text-cyan-300
+    outline-none
+    animate-pulse
+    shadow-[0_0_8px_rgba(34,211,238,0.5)]
+    focus:border-cyan-300
+    focus:shadow-[0_0_12px_rgba(34,211,238,0.8)]
+  "
+>
+  {months.map((month, index) => (
+    <option
+      key={month}
+      value={index}
+      className="bg-slate-900 text-white-300"
+    >
+      {month}
+    </option>
+  ))}
+</select>
 
       </div>
 
@@ -133,11 +131,11 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               KERJA NORMAL
             </div>
 
-            <div className="text-[11px] font-black text-white">
+            <div className="text-[11px] font-black text-blue-300">
               {summary.normalDays} Hari
             </div>
 
@@ -157,11 +155,11 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               KERJA PH
             </div>
 
-            <div className="text-[11px] font-black text-white">
+            <div className="text-[11px] font-black text-blue-300">
               {summary.phDays} Hari
             </div>
 
@@ -181,7 +179,7 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               OT NORMAL
             </div>
 
@@ -205,11 +203,11 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               OT PH
             </div>
 
-            <div className="text-[11px] font-black text-purple-300">
+            <div className="text-[11px] font-black text-blue-300">
               {summary.otPh} Jam
             </div>
 
@@ -233,7 +231,7 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-400">
+            <div className="text-[7px] font-bold text-white-400">
               JUMLAH OT
             </div>
 
@@ -244,7 +242,7 @@ export default function Header({
                   whitespace-nowrap
                   text-xs
                   font-black
-                  text-blue-200
+                  text-slate-300
                 "
               >
                 {jumlahOtDisplay} Jam
@@ -290,11 +288,11 @@ export default function Header({
             "
           >
 
-            <div className="text-[6px] font-bold text-slate-500">
+            <div className="text-[7px] font-bold text-white-500">
               ELAUN SYIF
             </div>
 
-            <div className="text-[11px] font-black text-white">
+            <div className="text-[11px] font-black text-blue-300">
               RM {Number(summary.elaun || 0).toFixed(2)}
             </div>
 
