@@ -261,7 +261,7 @@ export default function Header({
                     text-red-400
                   "
                 >
-                  ⚠️ OT MELEBIHI 104 JAM
+                  ⚠️ OT NORMAL MELEBIHI 104 JAM
                 </div>
               )}
 
