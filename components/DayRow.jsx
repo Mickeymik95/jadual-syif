@@ -98,7 +98,7 @@ export default function DayRow({
       shift === "OFF" ||
       shift === "REST"
     ) {
-      return "bg-orange-800 border-slate-900 text-slate-900";
+      return "bg-green-800 border-slate-900 text-slate-900";
     }
 
     return "bg-slate-900 border-slate-800 text-slate-300";
