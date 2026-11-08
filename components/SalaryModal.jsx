@@ -15,9 +15,6 @@ export default function SalaryModal({
 }) {
   const [basic, setBasic] = useState("");
 
-  // ==============================
-  // AMBIL BASIC YANG DISIMPAN
-  // ==============================
   useEffect(() => {
     if (!open) return;
 
@@ -31,9 +28,6 @@ export default function SalaryModal({
 
   if (!open) return null;
 
-  // ==============================
-  // BASIC
-  // ==============================
   const basicValue =
     Number(
       String(basic)
@@ -41,9 +35,6 @@ export default function SalaryModal({
         .trim()
     ) || 0;
 
-  // ==============================
-  // DATA DARIPADA JADUAL
-  // ==============================
   const elaunSyif =
     Number(summary?.elaun) || 0;
 

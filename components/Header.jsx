@@ -9,8 +9,7 @@ export default function Header({
   onMonthChange,
 }) {
   const jumlahOt =
-    Number(summary.otNormal || 0) +
-    Number(summary.otPh || 0);
+    Number(summary.otNormal || 0)
 
   const jumlahOtDisplay = Number(
     jumlahOt.toFixed(1)
@@ -44,11 +43,11 @@ export default function Header({
           text-base
           font-black
           tracking-[0.1em]
-          text-blue-400
-          drop-shadow-[0_0_5px_rgba(59,130,246,0.35)]
+          text-green-400
+          drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
-        ROSTER/OT Form by PB NAZMI
+    ROSTER / OT&GAJI by NAZMI_M!k😎
       </h1>
 
 
@@ -232,7 +231,7 @@ export default function Header({
           >
 
             <div className="text-[7px] font-bold text-white-400">
-              JUMLAH OT
+              JUMLAH OT NORMAL
             </div>
 
             <div className="flex items-center justify-between gap-1">
@@ -240,9 +239,9 @@ export default function Header({
               <div
                 className="
                   whitespace-nowrap
-                  text-xs
+                  text-l
                   font-black
-                  text-slate-300
+                  text-yellow-300
                 "
               >
                 {jumlahOtDisplay} Jam
