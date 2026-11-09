@@ -9,13 +9,14 @@ export default function Header({
   onMonthChange,
 }) {
   const jumlahOt =
-    Number(summary.otNormal || 0)
+    Number(summary.otNormal || 0) +
+    Number(summary.otPh || 0);
 
   const jumlahOtDisplay = Number(
     jumlahOt.toFixed(1)
   );
 
-  const otLebih104 = jumlahOt > 104;
+  const otLebih104 = Number(summary.otNormal || 0) > 104;
 
   return (
     <section
@@ -227,7 +228,7 @@ export default function Header({
           >
 
             <div className="text-[7px] font-bold text-white-400">
-              JUMLAH OT NORMAL
+              JUMLAH OT NORMAL + OT PH
             </div>
 
             <div className="flex items-center justify-between gap-1">
@@ -240,7 +241,7 @@ export default function Header({
                   text-yellow-300
                 "
               >
-                {jumlahOtDisplay} Jam
+                {jumlahOt} Jam
               </div>
 
 
