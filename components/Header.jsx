@@ -48,7 +48,7 @@ export default function Header({
       target="_blank" 
       rel="noopener noreferrer"
     >
-    By NAZMI-M!K
+    By NAZMI-M!k
     </a> 🤗🤣
       </h1>
       <div className="mb-1">
