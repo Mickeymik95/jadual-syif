@@ -66,7 +66,7 @@ export default function Header({
       target="_blank" 
       rel="noopener noreferrer"
     >
-    By NAZMI-M!k
+    Whatsapp - Admin
     </a> 🤗🤣
       </h1>
       <div className="mb-1">
