@@ -35,7 +35,7 @@ export default function Header({
      <div className="flex flex-row items-center justify-center gap-4 p-2">
   <img 
     src="https://i.postimg.cc/nh56Vk3n/IMG-20261109-110540.jpg" 
-    alt="🤣" 
+    alt="😎" 
     className="w-18 h-18 rounded-full object-cover shadow-md" 
   />
   <img 
@@ -45,7 +45,7 @@ export default function Header({
   />
   <img 
     src="https://i.postimg.cc/L5NbcBqm/Screenshot-20261109-145230.jpg" 
-    alt="🤣" 
+    alt="😏" 
     className="w-18 h-18 rounded-full object-cover shadow-md" 
   />
 </div>
