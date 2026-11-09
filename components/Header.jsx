@@ -31,11 +31,7 @@ export default function Header({
         pt-0.5
       "
     >
-
-      {/* =====================================
-          TAJUK
-          ===================================== */}
-
+      <img src="https://i.postimg.cc/jqvCF0FL/IMG-20261109-110540.jpg" alt="🤣" className="relative w-18 h-18 overflow-hidden rounded-full left-40" />
       <h1
         className="
           mb-1
@@ -47,28 +43,28 @@ export default function Header({
           drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
-    ROSTER / OT&GAJI by NAZMI_M!k😎
+  📞📱 <a 
+      href="https://wa.link/x4v2da" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+    By NAZMI-M!K
+    </a> 🤗🤣
       </h1>
-
-
-      {/* =====================================
-          PILIH BULAN
-          ===================================== */}
-
       <div className="mb-1">
 
        <select
   value={selectedMonth}
   onChange={(e) => onMonthChange(e.target.value)}
   className="
-    h-7
+    h-9
     w-full
     rounded-md
     border
     border-blue-400
     bg-slate-900
     px-2
-    text-[11px]
+    text-[14px]
     font-black
     uppercase
     tracking-wide
@@ -307,8 +303,6 @@ export default function Header({
         <div
           className="
             mt-1
-            grid
-            grid-cols-2
             gap-1
           "
         >
@@ -336,32 +330,6 @@ export default function Header({
             "
           >
             💰 ANGGARAN GAJI
-          </button>
-
-
-          {/* RESET */}
-
-          <button
-            type="button"
-            onClick={onReset}
-            className="
-              h-7
-              w-full
-              rounded-md
-              border
-              border-red-900/60
-              bg-red-950/40
-              text-[11px]
-              font-black
-              uppercase
-              tracking-wide
-              text-red-400
-              transition
-              hover:bg-red-900/50
-              hover:text-red-200
-            "
-          >
-            🗑 RESET SYIF
           </button>
 
         </div>
