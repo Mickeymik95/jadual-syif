@@ -31,7 +31,7 @@ export default function Header({
         pt-0.5
       "
     >
-      <img src="https://i.postimg.cc/jqvCF0FL/IMG-20261109-110540.jpg" alt="🤣" className="relative w-18 h-18 overflow-hidden rounded-full left-40" />
+      <img src="https://i.postimg.cc/jqvCF0FL/IMG-20261109-110540.jpg" alt="🤣" className="relative w-18 h-18 overflow-hidden rounded-full left-38.5" />
       <h1
         className="
           mb-1
