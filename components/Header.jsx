@@ -182,7 +182,22 @@ export default function Header({
             <div className="text-[11px] font-black text-blue-300">
               {summary.otNormal} Jam
             </div>
+              {/* AMARAN */}
 
+              {otLebih104 && (
+                <div
+                  className="
+                    animate-pulse
+                    whitespace-nowrap
+                    text-[10px]
+                    font-black
+                    uppercase
+                    text-red-400
+                  "
+                >
+                  ⚠️ OT NORMAL LEBIH 104 JAM
+                </div>
+              )}
           </div>
 
 
@@ -243,24 +258,6 @@ export default function Header({
               >
                 {jumlahOt} Jam
               </div>
-
-
-              {/* AMARAN */}
-
-              {otLebih104 && (
-                <div
-                  className="
-                    animate-pulse
-                    whitespace-nowrap
-                    text-[11px]
-                    font-black
-                    uppercase
-                    text-red-400
-                  "
-                >
-                  ⚠️ OT NORMAL MELEBIHI 104 JAM
-                </div>
-              )}
 
             </div>
 
