@@ -26,6 +26,8 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <AutoUpdate />
         {children}
+<script data-goatcounter="https://rostergaji.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
         </body>
     </html>
   );
