@@ -45,7 +45,7 @@ export default function Header({
           drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
-Menanti 22 Haribulan 🤣
+🗓️Menanti 22 Haribulan😂
 
 </h1>
 
@@ -67,8 +67,8 @@ Menanti 22 Haribulan 🤣
       target="_blank" 
       rel="noopener noreferrer"
     >
-    Aduan & penambahbaikan
-    </a> 🤗🤣
+    Aduan - klik sini
+    </a> 🤗☝️
       </h1>
       <div className="mb-1">
 
