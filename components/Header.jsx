@@ -41,7 +41,7 @@ export default function Header({
           text-base
           font-black
           tracking-[0.1em]
-          text-yellow-400
+          text-blue-400
           drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
@@ -149,7 +149,7 @@ export default function Header({
               KERJA NORMAL
             </div>
 
-            <div className="text-[11px] font-black text-blue-300">
+            <div className="text-[11px] font-black text-yellow-300">
               {summary.normalDays} Hari
             </div>
 
@@ -173,7 +173,7 @@ export default function Header({
               KERJA PH
             </div>
 
-            <div className="text-[11px] font-black text-blue-300">
+            <div className="text-[11px] font-black text-yellow-300">
               {summary.phDays} Hari
             </div>
 
@@ -197,7 +197,7 @@ export default function Header({
               OT NORMAL
             </div>
 
-            <div className="text-[11px] font-black text-blue-300">
+            <div className="text-[11px] font-black text-yellow-300">
               {summary.otNormal} Jam
             </div>
               {/* AMARAN */}
@@ -236,7 +236,7 @@ export default function Header({
               OT PH
             </div>
 
-            <div className="text-[11px] font-black text-blue-300">
+            <div className="text-[11px] font-black text-yellow-300">
               {summary.otPh} Jam
             </div>
 
@@ -303,7 +303,7 @@ export default function Header({
               ELAUN SYIF
             </div>
 
-            <div className="text-[11px] font-black text-blue-300">
+            <div className="text-[11px] font-black text-yellow-300">
               RM {Number(summary.elaun || 0).toFixed(2)}
             </div>
 
