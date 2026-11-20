@@ -53,7 +53,7 @@ export default function Header({
 
       <h1
         className="
-          mb-0
+          mb-2
           text-center
           text-base
           font-black
