@@ -32,7 +32,7 @@ export default function Header({
         pt-0.5
       "
     >
-     <div className="flex flex-row items-center justify-center gap-2 p-1">
+     <div className="flex flex-row items-center justify-center gap-1 p-1">
 
 <h1
         className="
