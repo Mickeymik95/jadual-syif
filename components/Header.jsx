@@ -32,7 +32,23 @@ export default function Header({
         pt-0.5
       "
     >
-     <div className="flex flex-row items-center justify-center gap-4 p-2">Kita semua menanti 22 Haribulan 🤝
+     <div className="flex flex-row items-center justify-center gap-2 p-1">
+
+<h1
+        className="
+          mb-1
+          text-center
+          text-base
+          font-black
+          tracking-[0.1em]
+          text-blue-400
+          drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
+        "
+      >
+Test
+
+<h1>
+
 </div>
 
       <h1
