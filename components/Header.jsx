@@ -36,7 +36,7 @@ export default function Header({
 
 <h1
         className="
-          mb-1
+          mb-0
           text-center
           text-base
           font-black
@@ -53,7 +53,7 @@ export default function Header({
 
       <h1
         className="
-          mb-1
+          mb-0
           text-center
           text-base
           font-black
@@ -62,13 +62,13 @@ export default function Header({
           drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
-  📞📱 <a 
+  📞<a 
       href="https://wa.link/x4v2da" 
       target="_blank" 
       rel="noopener noreferrer"
     >
-    Aduan - klik sini
-    </a> 🤗☝️
+    Aduan - klik utk Cadangan
+    </a>📱
       </h1>
       <div className="mb-1">
 
