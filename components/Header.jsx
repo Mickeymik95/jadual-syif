@@ -41,11 +41,11 @@ export default function Header({
           text-base
           font-black
           tracking-[0.1em]
-          text-blue-400
+          text-yellow-400
           drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
-Test
+Menanti 22 Haribulan 🤣
 
 </h1>
 
@@ -67,8 +67,8 @@ Test
       target="_blank" 
       rel="noopener noreferrer"
     >
-    Cadangan anda diperlukan
-    </a> Wsp 🤗🤣
+    Aduan & penambahbaikan
+    </a> 🤗🤣
       </h1>
       <div className="mb-1">
 
