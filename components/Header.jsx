@@ -32,22 +32,7 @@ export default function Header({
         pt-0.5
       "
     >
-     <div className="flex flex-row items-center justify-center gap-4 p-2">
-  <img 
-    src="https://i.postimg.cc/nh56Vk3n/IMG-20261109-110540.jpg" 
-    alt="😎" 
-    className="w-18 h-18 rounded-full object-cover shadow-md" 
-  />
-  <img 
-    src="https://i.postimg.cc/0Q1FDNRw/IMG-20261109-145419-edit-448384884397078.jpg" 
-    alt="🤣" 
-    className="w-18 h-18 rounded-full object-cover shadow-md" 
-  />
-  <img 
-    src="https://i.postimg.cc/L5NbcBqm/Screenshot-20261109-145230.jpg" 
-    alt="😏" 
-    className="w-18 h-18 rounded-full object-cover shadow-md" 
-  />
+     <div className="flex flex-row items-center justify-center gap-4 p-2">Kita semua menanti 22 Haribulan 🤝
 </div>
 
       <h1
@@ -66,8 +51,8 @@ export default function Header({
       target="_blank" 
       rel="noopener noreferrer"
     >
-    Whatsapp - Admin
-    </a> 🤗🤣
+    Cadangan anda diperlukan
+    </a> Wsp 🤗🤣
       </h1>
       <div className="mb-1">
 
