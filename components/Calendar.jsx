@@ -102,19 +102,19 @@ export default function Calendar({
           "
         >
 
-          <div className="text-[7px] font-bold text-slate-600">
+          <div className="text-[10px] font-bold text-slate-600">
             TARIKH
           </div>
 
-          <div className="text-[7px] font-bold text-slate-600">
+          <div className="text-[10px] font-bold text-slate-600">
             SYIF
           </div>
 
-          <div className="text-center text-[7px] font-bold text-slate-600">
+          <div className="text-center text-[10px] font-bold text-slate-600">
             OT
           </div>
 
-          <div className="text-center text-[7px] font-bold text-slate-600">
+          <div className="text-center text-[10px] font-bold text-slate-600">
             ELAUN
           </div>
 

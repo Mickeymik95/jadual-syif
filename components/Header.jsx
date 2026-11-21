@@ -170,10 +170,10 @@ export default function Header({
         py-0.5
       "
     >
-      <div className="text-[9px] font-bold text-white-500">
+      <div className="text-[10px] font-bold text-white-500">
         KERJA NORMAL
       </div>
-      <div className="text-[11px] font-black text-yellow-500">
+      <div className="text-[10px] font-black text-yellow-500">
         {summary.normalDays} Hari
       </div>
     </div>
@@ -189,10 +189,10 @@ export default function Header({
         py-0.5
       "
     >
-      <div className="text-[9px] font-bold text-white-500">
+      <div className="text-[10px] font-bold text-white-500">
         KERJA PH
       </div>
-      <div className="text-[11px] font-black text-yellow-500">
+      <div className="text-[10px] font-black text-yellow-500">
         {summary.phDays} Hari
       </div>
     </div>
@@ -208,10 +208,10 @@ export default function Header({
         py-0.5
       "
     >
-      <div className="text-[9px] font-bold text-white-500">
+      <div className="text-[10px] font-bold text-white-500">
         OT NORMAL
       </div>
-      <div className="text-[11px] font-black text-yellow-500">
+      <div className="text-[10px] font-black text-yellow-500">
         {summary.otNormal} Jam
       </div>
       {/* AMARAN */}
@@ -220,7 +220,7 @@ export default function Header({
           className="
             animate-pulse
             whitespace-nowrap
-            text-[10px]
+            text-[9px]
             font-black
             uppercase
             text-red-400
@@ -242,10 +242,10 @@ export default function Header({
         py-0.5
       "
     >
-      <div className="text-[9px] font-bold text-white-500">
+      <div className="text-[10px] font-bold text-white-500">
         OT PH
       </div>
-      <div className="text-[11px] font-black text-yellow-500">
+      <div className="text-[10px] font-black text-yellow-500">
         {summary.otPh} Jam
       </div>
     </div>
@@ -264,7 +264,7 @@ export default function Header({
         sm:col-span-2
       "
     >
-      <div className="text-[9px] font-bold text-white-400">
+      <div className="text-[10px] font-bold text-white-400">
         JUMLAH OT NORMAL + PH
       </div>
       <div className="flex items-center justify-between gap-1">
@@ -295,10 +295,10 @@ export default function Header({
         sm:col-span-1
       "
     >
-      <div className="text-[9px] font-bold text-white-500">
+      <div className="text-[10px] font-bold text-white-500">
         ELAUN SYIF
       </div>
-      <div className="text-[11px] font-black text-yellow-500">
+      <div className="text-[10px] font-black text-yellow-500">
         RM {Number(summary.elaun || 0).toFixed(2)}
       </div>
     </div>
