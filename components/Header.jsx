@@ -166,7 +166,7 @@ export default function Header({
       <div className="text-[7px] font-bold text-white-500">
         KERJA NORMAL
       </div>
-      <div className="text-[11px] font-black text-yellow-700">
+      <div className="text-[11px] font-black text-yellow-500">
         {summary.normalDays} Hari
       </div>
     </div>
@@ -185,7 +185,7 @@ export default function Header({
       <div className="text-[7px] font-bold text-white-500">
         KERJA PH
       </div>
-      <div className="text-[11px] font-black text-yellow-700">
+      <div className="text-[11px] font-black text-yellow-500">
         {summary.phDays} Hari
       </div>
     </div>
@@ -204,7 +204,7 @@ export default function Header({
       <div className="text-[7px] font-bold text-white-500">
         OT NORMAL
       </div>
-      <div className="text-[11px] font-black text-yellow-700">
+      <div className="text-[11px] font-black text-yellow-500">
         {summary.otNormal} Jam
       </div>
       {/* AMARAN */}
@@ -238,7 +238,7 @@ export default function Header({
       <div className="text-[7px] font-bold text-white-500">
         OT PH
       </div>
-      <div className="text-[11px] font-black text-yellow-700">
+      <div className="text-[11px] font-black text-yellow-500">
         {summary.otPh} Jam
       </div>
     </div>
@@ -266,7 +266,7 @@ export default function Header({
             whitespace-nowrap
             text-[12px]
             font-black
-            text-yellow-700
+            text-yellow-500
           "
         >
           {jumlahOt} Jam
@@ -291,7 +291,7 @@ export default function Header({
       <div className="text-[7px] font-bold text-white-500">
         ELAUN SYIF
       </div>
-      <div className="text-[11px] font-black text-yellow-700">
+      <div className="text-[11px] font-black text-yellow-500">
         RM {Number(summary.elaun || 0).toFixed(2)}
       </div>
     </div>
