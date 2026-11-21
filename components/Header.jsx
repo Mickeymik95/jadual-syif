@@ -318,23 +318,23 @@ export default function Header({
       type="button"
       onClick={onOpenSalary}
       className="
-        h-7
+        h-9
         w-full
         rounded-md
         border
         border-emerald-800
-        bg-emerald-950/50
+        bg-slate-950/50
         text-[11px]
         font-black
         uppercase
         tracking-wide
-        text-emerald-400
+        text-yellow-800/90
         transition
         hover:bg-emerald-900/60
         hover:text-emerald-200
       "
     >
-      🪙💰 KLIK DISINI UNTUK ANGGARAN GAJI 💶💸
+      🪙💰 KLIK SINI UNTUK ANGGARAN GAJI 💶💸
     </button>
   </div>
 </div>
