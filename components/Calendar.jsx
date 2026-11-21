@@ -5,6 +5,7 @@ import DayRow from "./DayRow";
 export default function Calendar({
   currentDate,
   selectedMonth,
+  selectedMonthDetails,
   days,
   shifts,
   otSambung,
@@ -12,14 +13,14 @@ export default function Calendar({
   onOpenOt,
 }) {
   const monthName = new Date(
-    currentDate.getFullYear(),
-    selectedMonth,
+    selectedMonthDetails.year,
+    selectedMonthDetails.month,
     1
   ).toLocaleDateString("ms-MY", {
     month: "long",
   });
 
-  const year = currentDate.getFullYear();
+  const year = selectedMonthDetails.year;
 
   const daysInMonth = days.length;
 
@@ -133,8 +134,8 @@ export default function Calendar({
             // =================================
 
             const isToday =
-              todayYear === currentDate.getFullYear() &&
-              todayMonth === selectedMonth &&
+              todayYear === selectedMonthDetails.year &&
+              todayMonth === selectedMonthDetails.month &&
               todayDay === item.day;
 
             return (
