@@ -170,7 +170,7 @@ export default function Header({
         py-0.5
       "
     >
-      <div className="text-[7px] font-bold text-white-500">
+      <div className="text-[9px] font-bold text-white-500">
         KERJA NORMAL
       </div>
       <div className="text-[11px] font-black text-yellow-500">
@@ -189,7 +189,7 @@ export default function Header({
         py-0.5
       "
     >
-      <div className="text-[7px] font-bold text-white-500">
+      <div className="text-[9px] font-bold text-white-500">
         KERJA PH
       </div>
       <div className="text-[11px] font-black text-yellow-500">
@@ -208,7 +208,7 @@ export default function Header({
         py-0.5
       "
     >
-      <div className="text-[7px] font-bold text-white-500">
+      <div className="text-[9px] font-bold text-white-500">
         OT NORMAL
       </div>
       <div className="text-[11px] font-black text-yellow-500">
@@ -242,7 +242,7 @@ export default function Header({
         py-0.5
       "
     >
-      <div className="text-[7px] font-bold text-white-500">
+      <div className="text-[9px] font-bold text-white-500">
         OT PH
       </div>
       <div className="text-[11px] font-black text-yellow-500">
@@ -264,7 +264,7 @@ export default function Header({
         sm:col-span-2
       "
     >
-      <div className="text-[7px] font-bold text-white-400">
+      <div className="text-[9px] font-bold text-white-400">
         JUMLAH OT NORMAL + PH
       </div>
       <div className="flex items-center justify-between gap-1">
@@ -295,7 +295,7 @@ export default function Header({
         sm:col-span-1
       "
     >
-      <div className="text-[7px] font-bold text-white-500">
+      <div className="text-[9px] font-bold text-white-500">
         ELAUN SYIF
       </div>
       <div className="text-[11px] font-black text-yellow-500">
@@ -322,12 +322,12 @@ export default function Header({
         w-full
         rounded-md
         border
-        border-yellow-400
+        border-blue-400
         text-[11px]
         font-black
         uppercase
         tracking-wide
-        text-yellow-400
+        text-blue-400
         transition
         hover:bg-emerald-900/60
         hover:text-emerald-200
