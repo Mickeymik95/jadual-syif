@@ -322,19 +322,18 @@ export default function Header({
         w-full
         rounded-md
         border
-        border-emerald-800
-        bg-slate-950/50
+        border-yellow-400
         text-[11px]
         font-black
         uppercase
         tracking-wide
-        text-yellow-800/90
+        text-yellow-400
         transition
         hover:bg-emerald-900/60
         hover:text-emerald-200
       "
     >
-      🪙💰 KLIK SINI UNTUK ANGGARAN GAJI 💶💸
+      🪙💶 KLIK SINI UNTUK ANGGARAN GAJI 💸💰
     </button>
   </div>
 </div>
