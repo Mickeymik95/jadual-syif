@@ -41,7 +41,7 @@ export default function Header({
           text-base
           font-black
           tracking-[0.1em]
-          text-blue-400
+          text-blue-700
           drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
@@ -53,7 +53,15 @@ export default function Header({
 
       <h1
   className="
-    mb-2
+    mb-1
+    inline-block
+    border-1
+    border-green-400
+    width-auto
+    px-4
+    w-full
+    py-1
+    rounded-md
     text-center
     text-base
     font-black
