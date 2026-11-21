@@ -66,16 +66,16 @@ export default function DayRow({
       return "bg-yellow-600 border-yellow-200 text-slate-950";
     }
 
-    if (shift === "NS") {
-      return "bg-slate-600 border-slate-300 text-white";
-    }
-
     if (shift === "OD DS") {
       return "bg-yellow-300 border-yellow-200 text-slate-950";
     }
 
+     if (shift === "NS") {
+      return "bg-neutral-700 border-slate-300 text-white";
+    }
+
     if (shift === "OD NS") {
-      return "bg-slate-400 border-slate-400 text-white";
+      return "bg-neutral-900 border-slate-300 text-white";
     }
 
     if (shift === "PH DS") {
@@ -98,7 +98,7 @@ export default function DayRow({
       shift === "OFF" ||
       shift === "REST"
     ) {
-      return "bg-slate-800 border-slate-300 text-slate-300";
+      return "bg-slate-900 border-slate-300 text-slate-300";
     }
 
     return "bg-slate-900 border-slate-800 text-slate-300";
