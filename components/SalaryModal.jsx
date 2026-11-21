@@ -327,7 +327,7 @@ export default function SalaryModal({
                 className="
                   text-[11px]
                   font-bold
-                  text-slate-400
+                  text-white-300
                 "
               >
                 Basic
@@ -357,7 +357,7 @@ export default function SalaryModal({
                 className="
                   text-[11px]
                   font-bold
-                  text-slate-400
+                  text-white-300
                 "
               >
                 Elaun Syif
@@ -387,7 +387,7 @@ export default function SalaryModal({
                 className="
                   text-[11px]
                   font-bold
-                  text-slate-400
+                 text-white-300
                 "
               >
                 Elaun Dobi
@@ -430,7 +430,7 @@ export default function SalaryModal({
                     text-[10px]
                     font-black
                     uppercase
-                    text-blue-300
+                    text-yellow-500
                   "
                 >
                   OT NORMAL
@@ -440,7 +440,7 @@ export default function SalaryModal({
                   className="
                     text-[11px]
                     font-black
-                    text-white
+                    text-white-300
                   "
                 >
                   {money(otNormal)}
@@ -450,9 +450,9 @@ export default function SalaryModal({
               <div
                 className="
                   mt-0.5
-                  text-[9px]
+                  text-[11px]
                   font-bold
-                  text-slate-500
+                  text-white-300
                 "
               >
                 Rate {money(rateOtNormal)} × {jumlahOtNormal} J
@@ -485,7 +485,7 @@ export default function SalaryModal({
                     text-[10px]
                     font-black
                     uppercase
-                    text-purple-300
+                    text-green-600
                   "
                 >
                   KERJA PH
@@ -495,7 +495,7 @@ export default function SalaryModal({
                   className="
                     text-[11px]
                     font-black
-                    text-white
+                    text-white-300
                   "
                 >
                   {money(kerjaPh)}
@@ -505,9 +505,9 @@ export default function SalaryModal({
               <div
                 className="
                   mt-0.5
-                  text-[9px]
+                  text-[11px]
                   font-bold
-                  text-slate-500
+                  text-white-300
                 "
               >
                 Rate {money(rateKerjaPh)} × {jumlahHariPh} HARI
@@ -520,9 +520,8 @@ export default function SalaryModal({
             <div
               className="
                 rounded-lg
-                border
-                border-purple-900/60
-                bg-purple-950/20
+                border-slate-800
+                bg-slate-900
                 px-3
                 py-2
               "
@@ -539,7 +538,7 @@ export default function SalaryModal({
                     text-[10px]
                     font-black
                     uppercase
-                    text-purple-300
+                    text-green-600
                   "
                 >
                   OT PH
@@ -559,9 +558,9 @@ export default function SalaryModal({
               <div
                 className="
                   mt-0.5
-                  text-[9px]
+                  text-[11px]
                   font-bold
-                  text-slate-500
+                  text-white-300
                 "
               >
                 Rate {money(rateOtPh)} × {jumlahOtPh} J
@@ -586,14 +585,14 @@ export default function SalaryModal({
           >
             <div
               className="
-                text-[9px]
+                text-[12px]
                 font-black
                 uppercase
                 tracking-widest
-                text-red-300
+                text-red-400
               "
             >
-              GAJI KASAR
+              GAJI KASAR BULAN DEPAN
             </div>
 
             <div

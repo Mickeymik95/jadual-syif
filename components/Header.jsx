@@ -45,7 +45,7 @@ export default function Header({
           drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
-🗓️Menanti 22 Haribulan😂
+🗓️🤣Menanti 22 Haribulan🐅🦑
 
 </h1>
 
@@ -67,7 +67,7 @@ export default function Header({
       target="_blank" 
       rel="noopener noreferrer"
     >
-    Aduan/Cadangan - Nazmi
+    Aduan/Cadangan - KLIK
     </a> 📱
       </h1>
       <div className="mb-1">
@@ -149,7 +149,7 @@ export default function Header({
               KERJA NORMAL
             </div>
 
-            <div className="text-[11px] font-black text-yellow-300">
+            <div className="text-[11px] font-black text-yellow-500">
               {summary.normalDays} Hari
             </div>
 
@@ -173,7 +173,7 @@ export default function Header({
               KERJA PH
             </div>
 
-            <div className="text-[11px] font-black text-yellow-300">
+            <div className="text-[11px] font-black text-yellow-500">
               {summary.phDays} Hari
             </div>
 
@@ -197,7 +197,7 @@ export default function Header({
               OT NORMAL
             </div>
 
-            <div className="text-[11px] font-black text-yellow-300">
+            <div className="text-[11px] font-black text-yellow-500">
               {summary.otNormal} Jam
             </div>
               {/* AMARAN */}
@@ -236,7 +236,7 @@ export default function Header({
               OT PH
             </div>
 
-            <div className="text-[11px] font-black text-yellow-300">
+            <div className="text-[11px] font-black text-yellow-500">
               {summary.otPh} Jam
             </div>
 
@@ -271,7 +271,7 @@ export default function Header({
                   whitespace-nowrap
                   text-l
                   font-black
-                  text-yellow-300
+                  text-yellow-500
                 "
               >
                 {jumlahOt} Jam
@@ -303,7 +303,7 @@ export default function Header({
               ELAUN SYIF
             </div>
 
-            <div className="text-[11px] font-black text-yellow-300">
+            <div className="text-[11px] font-black text-yellow-500">
               RM {Number(summary.elaun || 0).toFixed(2)}
             </div>
 
@@ -345,7 +345,7 @@ export default function Header({
               hover:text-emerald-200
             "
           >
-            💰 ANGGARAN GAJI
+            🪙💰 KLIK DISINI UNTUK ANGGARAN GAJI 💶💸
           </button>
 
         </div>
