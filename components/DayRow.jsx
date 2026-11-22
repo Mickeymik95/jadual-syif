@@ -123,7 +123,7 @@ export default function DayRow({
         grid
         grid-cols-[90px_minmax(0,1fr)_35px_35px_32px]
         items-start
-        gap-1
+        gap-0.5
         h-[38px]
         border-b
         border-slate-800
@@ -143,7 +143,7 @@ export default function DayRow({
           min-h-[38px]
           flex-row
           items-center
-          gap-1.5
+          gap-1
           rounded-md
           border-l-2
           px-2
@@ -163,6 +163,7 @@ export default function DayRow({
             text-[14px]
             font-black
             leading-none
+            w-auto
           "
         >
           {String(day).padStart(2, "0")}
@@ -178,6 +179,7 @@ export default function DayRow({
             font-black
             uppercase
             leading-none
+            w-auto
           "
         >
           {weekday}
