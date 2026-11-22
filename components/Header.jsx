@@ -41,7 +41,7 @@ export default function Header({
           text-base
           font-black
           tracking-[0.1em]
-          text-blue-400
+          text-pink-700
           drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
         "
       >
