@@ -271,7 +271,6 @@ export default function DayRow({
           }
           className={`
             absolute
-            mb-2
             left-0
             right-0
             ${hasExtra ? "top-[14px]" : "top-0"}
