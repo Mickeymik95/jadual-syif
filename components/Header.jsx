@@ -36,16 +36,17 @@ export default function Header({
 
 <h1
         className="
-          mb-0
-          text-center
-          text-base
-          font-black
-          tracking-[0.1em]
-          text-pink-700
-          drop-shadow-[0_0_5px_rgba(10,130,246,0.35)]
-        "
+  text-center
+  text-base
+  font-black
+  tracking-[0.1em]
+  text-pink-700
+  drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]
+  animate-pulse
+"
+
       >
-🐅🦑Menanti 22 Haribulan📅🤗
+🐅🦑MENANTI TARIKH 22 @ 20🗓️🤣
 
 </h1>
 
@@ -53,10 +54,7 @@ export default function Header({
 
       <h1
   className="
-      mb-1
     inline-block
-    border-1
-    border-green-400
     width-auto
     w-full
     py-1
@@ -91,7 +89,7 @@ export default function Header({
           font-black
           tracking-[0.1em]
           text-slate-300">
-      Contact Developer
+   ☎️ WHATSAPP - ADMIN 📱
     </span>
 
     {/* Logo WhatsApp Kanan */}
@@ -126,9 +124,9 @@ export default function Header({
     text-cyan-300
     outline-none
     animate-pulse
-    shadow-[0_0_8px_rgba(34,211,238,0.5)]
+    shadow-[0_0_10px_rgba(34,211,238,0.5)]
     focus:border-cyan-300
-    focus:shadow-[0_0_12px_rgba(34,211,238,0.8)]
+    focus:shadow-[0_0_9px_rgba(34,211,238,0.8)]
   "
 >
   {months.map((month) => (
