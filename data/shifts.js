@@ -1,19 +1,19 @@
 export const SHIFT_OPTIONS = [
   {
     value: "DS",
-    label: "KERJA BIASA D/S",
+    label: "PAGI",
   },
   {
     value: "NS",
-    label: "KERJA BIASA N/S",
+    label: "MALAM",
   },
   {
     value: "OD DS",
-    label: "KERJA OD D/S",
+    label: "OD PAGI",
   },
   {
     value: "OD NS",
-    label: "KERJA OD N/S",
+    label: "OD MALAM",
   },
   {
     value: "OFF",
@@ -25,11 +25,11 @@ export const SHIFT_OPTIONS = [
   },
   {
     value: "PH DS",
-    label: "PH D/S",
+    label: "PH PAGI",
   },
   {
     value: "PH NS",
-    label: "PH N/S",
+    label: "PH MALAM",
   },
   {
     value: "CUTI/AL",

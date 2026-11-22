@@ -121,7 +121,7 @@ export default function DayRow({
     <div
       className="
         grid
-        grid-cols-[88px_minmax(0,1fr)_42px_52px_32px]
+        grid-cols-[90px_minmax(0,1fr)_38px_38px_32px]
         items-start
         gap-1
         h-[38px]
@@ -274,7 +274,7 @@ export default function DayRow({
             right-0
             ${hasExtra ? "top-[14px]" : "top-0"}
             ${shiftHeightClass}
-            w-full
+            w-auto
             min-w-0
             rounded-md
             border

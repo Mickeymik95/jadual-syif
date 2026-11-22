@@ -265,7 +265,7 @@ export default function Home() {
 
   const days = useMemo(
     () => {
-      const weekdays = ["AHD", "ISN", "SEL", "RAB", "KHA", "JUM", "SAB"];
+      const weekdays = ["AHAD", "ISNIN", "SELASA", "RABU", "KHAMIS", "JUMAAT", "SABTU"];
 
       return Array.from(
         {
