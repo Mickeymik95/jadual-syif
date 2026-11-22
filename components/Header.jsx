@@ -332,7 +332,7 @@ export default function Header({
         font-black
         uppercase
         tracking-wide
-        text-blue-400
+        text-yellow-500
         transition
         hover:bg-emerald-900/60
         hover:text-emerald-200
