@@ -104,45 +104,6 @@ export default function Header({
   </a>
 </h1>
 
-      <div className="mb-1">
-
-       <select
-  value={selectedMonth}
-  onChange={(e) => onMonthChange(e.target.value)}
-  className="
-    h-9
-    w-full
-    rounded-md
-    border
-    border-blue-400
-    bg-slate-900
-    px-2
-    text-[14px]
-    font-black
-    uppercase
-    tracking-wide
-    text-cyan-300
-    outline-none
-    animate-pulse
-    shadow-[0_0_10px_rgba(34,211,238,0.5)]
-    focus:border-cyan-300
-    focus:shadow-[0_0_9px_rgba(34,211,238,0.8)]
-  "
->
-  {months.map((month) => (
-    <option
-      key={month.key}
-      value={month.key}
-      className="bg-slate-900 text-white-300"
-    >
-      {month.label}
-    </option>
-  ))}
-</select>
-
-      </div>
-
-
       {/* =====================================
           DATA
           ===================================== */}
@@ -156,6 +117,7 @@ export default function Header({
     p-1
   "
 >
+
   <div
     className="
       grid
@@ -314,8 +276,8 @@ export default function Header({
       ===================================== */}
   <div
     className="
-      mt-1
       gap-1
+      mt-1
     "
   >
     {/* KIRA GAJI */}
@@ -323,6 +285,7 @@ export default function Header({
       type="button"
       onClick={onOpenSalary}
       className="
+        mb-1
         h-9
         w-full
         rounded-md
@@ -341,8 +304,49 @@ export default function Header({
       🪙💶 KLIK SINI UNTUK ANGGARAN GAJI 💸💰
     </button>
   </div>
-</div>
 
+{/* =====================================
+      BUTANG PILIHAN BULAN
+      ===================================== */}
+
+  <div className="">
+
+       <select
+  value={selectedMonth}
+  onChange={(e) => onMonthChange(e.target.value)}
+  className="
+    h-9
+    w-full
+    rounded-md
+    border
+    border-blue-400
+    bg-slate-900
+    px-2
+    text-[14px]
+    font-black
+    uppercase
+    tracking-wide
+    text-cyan-300
+    outline-none
+    animate-pulse
+    shadow-[0_0_10px_rgba(34,211,238,0.5)]
+    focus:border-cyan-300
+    focus:shadow-[0_0_9px_rgba(34,211,238,0.8)]
+  "
+>
+  {months.map((month) => (
+    <option
+      key={month.key}
+      value={month.key}
+      className="bg-slate-900 text-white-300"
+    >
+      {month.label}
+    </option>
+  ))}
+</select>
+
+      </div>
+</div>
 
     </section>
   );
