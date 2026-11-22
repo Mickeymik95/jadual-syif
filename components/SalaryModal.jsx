@@ -485,7 +485,7 @@ export default function SalaryModal({
                     text-[10px]
                     font-black
                     uppercase
-                    text-pink-700
+                    text-pink-600
                   "
                 >
                   KERJA PH
@@ -538,7 +538,7 @@ export default function SalaryModal({
                     text-[10px]
                     font-black
                     uppercase
-                    text-pink-700
+                    text-pink-600
                   "
                 >
                   OT PH
