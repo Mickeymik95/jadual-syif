@@ -121,7 +121,7 @@ export default function DayRow({
     <div
       className="
         grid
-        grid-cols-[90px_minmax(0,1fr)_38px_38px_32px]
+        grid-cols-[90px_minmax(0,1fr)_35px_35px_32px]
         items-start
         gap-1
         h-[38px]
