@@ -128,6 +128,7 @@ export default function DayRow({
         h-[38px]
         border-b
         border-slate-800
+        px-1
       "
     >
 
