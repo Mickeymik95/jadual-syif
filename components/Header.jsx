@@ -358,7 +358,6 @@ export default function Header({
       bg-slate-950
       px-1
       py-1
-      mb-0
       "
   >
     <div className="text-[9px] font-black uppercase text-blue-200">

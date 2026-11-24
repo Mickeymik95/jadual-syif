@@ -71,11 +71,11 @@ export default function DayRow({
     }
 
      if (shift === "NS") {
-      return "bg-neutral-700 border-slate-700 text-white";
+      return "bg-neutral-700 border-neutral-700 text-white";
     }
 
     if (shift === "OD NS") {
-      return "bg-neutral-900 border-slate-900 text-white";
+      return "bg-neutral-900 border-neutral-900 text-white";
     }
 
     if (shift === "PH DS") {
@@ -100,6 +100,7 @@ export default function DayRow({
     ) {
       return "bg-slate-400 border-slate-400 text-black";
     }
+    return "bg-slate-950 border-slate-950 text-white";
 
   }
 
@@ -127,8 +128,6 @@ export default function DayRow({
         h-[38px]
         border-b
         border-slate-800
-        px-1
-        py-1
       "
     >
 
