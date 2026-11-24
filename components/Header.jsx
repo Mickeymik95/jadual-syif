@@ -347,7 +347,7 @@ export default function Header({
       border-b
       border-slate-800
       bg-slate-950
-      px-1
+      px-0
       py-1
       "
   >
