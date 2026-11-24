@@ -183,7 +183,7 @@ export default function SalaryModal({
               border
               border-slate-700
               bg-slate-800
-              text-sm
+              text-big
               font-black
               text-slate-300
               hover:bg-red-900

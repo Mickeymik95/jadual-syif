@@ -64,14 +64,18 @@ export default function OtModal({
             onClick={onClose}
             className="
               flex
-              h-7
-              w-7
+              h-9
+              w-9
               items-center
               justify-center
               rounded-lg
-              text-lg
-              text-slate-500
-              hover:bg-slate-800
+              border
+              border-slate-700
+              bg-slate-800
+              text-big
+              font-black
+              text-slate-300
+              hover:bg-red-900
               hover:text-white
             "
           >

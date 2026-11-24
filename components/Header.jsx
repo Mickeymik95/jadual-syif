@@ -303,6 +303,8 @@ export default function Header({
     >
       🪙💶 KLIK SINI UNTUK ANGGARAN GAJI 💸💰
     </button>
+
+
   </div>
 
 {/* =====================================
@@ -349,7 +351,7 @@ export default function Header({
 <div
     className="
       grid
-      grid-cols-[88px_1fr_33px_33px_28px]
+      grid-cols-[88px_1fr_33px_33px_27px]
       rounded-md
       items-center
       gap-1
