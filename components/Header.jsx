@@ -280,18 +280,20 @@ export default function Header({
     onChange={(e) => onMonthChange(e.target.value)}
     className="
       h-9
-      flex-1
-      min-w-0
-      truncate
-      rounded-md
-      px-1
-      text-[12px]
-      font-black
-      uppercase
-      tracking-wide
-      text-slate-300
-      transition
-      bg-green-900
+  flex-1
+  min-w-0
+  truncate
+  rounded-md
+  border
+  border-white/30
+  px-2
+  text-[12px]
+  font-black
+  uppercase
+  tracking-wide
+  text-white-300
+  transition
+  bg-green-600
     "
   >
     {months.map((month) => (
@@ -310,19 +312,21 @@ export default function Header({
     type="button"
     onClick={onOpenSalary}
     className="
-      h-9
-      flex-1
-      min-w-0
-      truncate
-      rounded-md
-      px-2
-      text-[12px]
-      font-black
-      uppercase
-      tracking-wide
-      text-slate-300
-      transition
-      bg-cyan-800
+     h-9
+  flex-1
+  min-w-0
+  truncate
+  rounded-md
+  border
+  border-white/30
+  px-2
+  text-[12px]
+  font-black
+  uppercase
+  tracking-wide
+  text-white-300
+  transition
+  bg-cyan-600
     "
   >ANGGARAN GAJI 💰</button>
 </div>
