@@ -284,17 +284,14 @@ export default function Header({
       min-w-0
       truncate
       rounded-md
-      border
-      border-green-400
-      px-2
+      px-1
       text-[12px]
       font-black
       uppercase
       tracking-wide
-      text-green-300
+      text-slate-900
       transition
-      hover:bg-emerald-900/60
-      hover:text-emerald-200
+      bg-green-900
     "
   >
     {months.map((month) => (
@@ -303,7 +300,7 @@ export default function Header({
         value={month.key}
         className="bg-slate-900 text-white-300"
       >
-        {month.label} 🗓️
+       📅{month.label}🗓️
       </option>
     ))}
   </select>
@@ -318,20 +315,17 @@ export default function Header({
       min-w-0
       truncate
       rounded-md
-      border
-      border-blue-400
       px-2
       text-[12px]
       font-black
       uppercase
       tracking-wide
-      text-yellow-500
+      text-slate-900
       transition
-      hover:bg-emerald-900/60
-      hover:text-emerald-200
+      bg-cyan-800
     "
   >
-   ANGGARAN GAJI 💶
+  💰ANGGARAN GAJI💴
   </button>
 </div>
 
