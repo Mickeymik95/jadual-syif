@@ -17,11 +17,11 @@ export const SHIFT_OPTIONS = [
   },
   {
     value: "OFF",
-    label: "OFF",
+    label: "OFF DAY",
   },
   {
     value: "REST",
-    label: "REST",
+    label: "REST DAY",
   },
   {
     value: "PH DS",
