@@ -28,7 +28,6 @@ export default function Header({
         border-slate-900
         bg-slate-950
         px-1
-      
       "
     >
      <div className="flex flex-row items-center justify-center gap-1 p-1">
@@ -350,11 +349,11 @@ export default function Header({
       py-1
       "
   >
-    <div className="text-[9px] font-black uppercase text-blue-200">
+    <div className="text-[9px] font-black uppercase text-blue-200 ml-1.5  ">
       TARIKH
     </div>
 
-    <div className="text-[9px] font-black uppercase text-blue-200">
+    <div className="text-[9px] font-black uppercase text-blue-200 ml-2">
       SYIF
     </div>
 
