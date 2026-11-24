@@ -315,6 +315,7 @@ export default function Header({
   value={selectedMonth}
   onChange={(e) => onMonthChange(e.target.value)}
   className="
+    mb-1
     h-9
     w-full
     rounded-md
@@ -344,6 +345,40 @@ export default function Header({
     </option>
   ))}
 </select>
+
+<div
+    className="
+      grid
+      grid-cols-[89px_minmax(0,1fr)_35px_33px_32px]
+      rounded-md
+      items-center
+      gap-1
+      border-b
+      border-slate-800
+      bg-slate-950
+      px-1
+      py-1
+      mb-0
+      "
+  >
+    <div className="text-[9px] font-black uppercase text-blue-200">
+      TARIKH
+    </div>
+
+    <div className="text-[9px] font-black uppercase text-blue-200">
+      SYIF
+    </div>
+
+    <div className="text-center text-[9px] font-black uppercase text-blue-200">
+      OT
+    </div>
+
+    <div className="text-center text-[9px] font-black uppercase text-blue-200">
+      ELAUN
+    </div>
+
+    <div></div>
+  </div>
 
       </div>
 </div>
