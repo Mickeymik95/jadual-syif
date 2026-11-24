@@ -272,40 +272,68 @@ export default function Header({
   </div>
 
   {/* =====================================
-      BUTANG KIRA GAJI + RESET
+      BUTANG PILIH BULAN DAN KIRA GAJI
       ===================================== */}
-  <div
+<div className="flex items-center gap-1 mt-1">
+  <select
+    value={selectedMonth}
+    onChange={(e) => onMonthChange(e.target.value)}
     className="
-      gap-1
-      mt-1
+      h-9
+      flex-1
+      min-w-0
+      truncate
+      rounded-md
+      border
+      border-green-400
+      px-2
+      text-[12px]
+      font-black
+      uppercase
+      tracking-wide
+      text-green-300
+      transition
+      hover:bg-emerald-900/60
+      hover:text-emerald-200
     "
   >
-    {/* KIRA GAJI */}
-    <button
-      type="button"
-      onClick={onOpenSalary}
-      className="
-        mb-1
-        h-9
-        w-full
-        rounded-md
-        border
-        border-blue-400
-        text-[11px]
-        font-black
-        uppercase
-        tracking-wide
-        text-yellow-500
-        transition
-        hover:bg-emerald-900/60
-        hover:text-emerald-200
-      "
-    >
-      🪙💶 KLIK SINI UNTUK ANGGARAN GAJI 💸💰
-    </button>
+    {months.map((month) => (
+      <option
+        key={month.key}
+        value={month.key}
+        className="bg-slate-900 text-white-300"
+      >
+        {month.label} 📅
+      </option>
+    ))}
+  </select>
 
-
-  </div>
+  {/* KIRA GAJI */}
+  <button
+    type="button"
+    onClick={onOpenSalary}
+    className="
+      h-9
+      flex-1
+      min-w-0
+      truncate
+      rounded-md
+      border
+      border-blue-400
+      px-2
+      text-[12px]
+      font-black
+      uppercase
+      tracking-wide
+      text-yellow-500
+      transition
+      hover:bg-emerald-900/60
+      hover:text-emerald-200
+    "
+  >
+   ANGGARAN GAJI 💶
+  </button>
+</div>
 
 {/* =====================================
       BUTANG PILIHAN BULAN
@@ -313,45 +341,10 @@ export default function Header({
 
   <div className="">
 
-       <select
-  value={selectedMonth}
-  onChange={(e) => onMonthChange(e.target.value)}
-  className="
-    mb-1
-    h-9
-    w-full
-    rounded-md
-    border
-    border-blue-400
-    bg-slate-900
-    px-2
-    text-[14px]
-    font-black
-    uppercase
-    tracking-wide
-    text-cyan-300
-    outline-none
-    animate-pulse
-    shadow-[0_0_10px_rgba(34,211,238,0.5)]
-    focus:border-cyan-300
-    focus:shadow-[0_0_9px_rgba(34,211,238,0.8)]
-  "
->
-  {months.map((month) => (
-    <option
-      key={month.key}
-      value={month.key}
-      className="bg-slate-900 text-white-300"
-    >
-      {month.label}
-    </option>
-  ))}
-</select>
-
 <div
     className="
       grid
-      grid-cols-[88px_1fr_33px_33px_27px]
+      grid-cols-[88px_1fr_33px_33px_25px]
       rounded-md
       items-center
       gap-1
