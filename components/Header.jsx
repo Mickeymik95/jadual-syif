@@ -303,7 +303,7 @@ export default function Header({
         value={month.key}
         className="bg-slate-900 text-white-300"
       >
-        {month.label} 📅
+        {month.label} 🗓️
       </option>
     ))}
   </select>
