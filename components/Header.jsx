@@ -289,7 +289,7 @@ export default function Header({
       font-black
       uppercase
       tracking-wide
-      text-slate-900
+      text-slate-300
       transition
       bg-green-900
     "
@@ -300,7 +300,7 @@ export default function Header({
         value={month.key}
         className="bg-slate-900 text-white-300"
       >
-       📅{month.label}🗓️
+       📅 {month.label} 🗓️
       </option>
     ))}
   </select>
@@ -320,12 +320,12 @@ export default function Header({
       font-black
       uppercase
       tracking-wide
-      text-slate-900
+      text-slate-300
       transition
       bg-cyan-800
     "
   >
-  💰ANGGARAN GAJI💴
+  💰 ANGGARAN GAJI 💴
   </button>
 </div>
 
