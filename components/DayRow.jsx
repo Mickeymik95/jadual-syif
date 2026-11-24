@@ -123,12 +123,12 @@ export default function DayRow({
       className="
         grid
         grid-cols-[88px_180px_33px_33px_33px]
-        items-start
+        items-center
         gap-0.5
         h-[38px]
         border-b
         border-slate-800
-        px-0.5
+        px-1
       "
     >
 

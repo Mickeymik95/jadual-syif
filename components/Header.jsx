@@ -351,7 +351,7 @@ export default function Header({
       grid
       grid-cols-[89px_165px_33px_33px_33px]
       rounded-md
-      items-start
+      items-center
       gap-1
       border-b
       border-slate-800
