@@ -349,7 +349,7 @@ export default function Header({
 <div
     className="
       grid
-      grid-cols-[89px_147px_33px_36px_33px]
+      grid-cols-[89px_150px_33px_33px_33px]
       rounded-md
       items-start
       gap-1
@@ -376,7 +376,7 @@ export default function Header({
       ELAUN
     </div>
     <div className="text-center text-[9px] font-black uppercase text-blue-200">
-      OT +
+      +/-
     </div>
   </div>
 
