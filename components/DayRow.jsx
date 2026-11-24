@@ -148,7 +148,7 @@ export default function DayRow({
           rounded-md
           border-l-2
           px-1
-          mb-2
+          mb-2.5
           ${getDateBoxStyle()}
           ${
             isToday
