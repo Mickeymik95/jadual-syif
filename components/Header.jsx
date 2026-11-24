@@ -349,7 +349,7 @@ export default function Header({
 <div
     className="
       grid
-      grid-cols-[89px_150px_33px_35px_33px]
+      grid-cols-[89px_145px_33px_35px_33px]
       rounded-md
       items-start
       gap-1
