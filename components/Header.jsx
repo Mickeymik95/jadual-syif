@@ -232,7 +232,7 @@ export default function Header({
       "
     >
       <div className="text-[10px] font-bold text-white-400">
-        JUMLAH OT NORMAL + PH
+        JUMLAH OT NORMAL + OT PH
       </div>
       <div className="flex items-center justify-between gap-1">
         <div
