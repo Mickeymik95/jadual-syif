@@ -24,12 +24,11 @@ export default function Header({
         sticky
         top-0
         z-[100]
-        border-b
-        border-blue-900/40
+        border
+        border-slate-900
         bg-slate-950
         px-1
-        pb-0.5
-        pt-0.5
+      
       "
     >
      <div className="flex flex-row items-center justify-center gap-1 p-1">
@@ -112,9 +111,9 @@ export default function Header({
   className="
     rounded-lg
     border
-    border-blue-900/50
+    border-slate-900
     bg-slate-900
-    p-1
+    p-0.5
   "
 >
 
@@ -335,7 +334,10 @@ export default function Header({
       BUTANG PILIHAN BULAN
       ===================================== */}
 
-  <div className="">
+  <div className="
+  mt-1
+  mb-0
+  ">
 
 <div
     className="
@@ -344,10 +346,7 @@ export default function Header({
       rounded-md
       items-center
       gap-1
-      border-b
-      border-slate-800
-      bg-slate-950
-      px-0
+      bg-slate-900
       py-1
       "
   >
