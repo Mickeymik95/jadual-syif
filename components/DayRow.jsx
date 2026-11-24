@@ -128,7 +128,7 @@ export default function DayRow({
         h-[38px]
         border-b
         border-slate-800
-        px-0.5
+        px-1
         py-0
       "
     >
@@ -281,7 +281,7 @@ export default function DayRow({
             min-w-0
             rounded-md
             border
-            border-slate-700
+            border-slate-800
             bg-slate-950
             px-1
             text-[9px]
