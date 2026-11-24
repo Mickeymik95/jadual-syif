@@ -445,12 +445,12 @@ export default function DayRow({
             bg-blue-950
             text-[12px]
             font-black
-            text-green-400
+            text-slate-300
             hover:bg-blue-800
           "
           title="OT Sambung"
         >
-          🛠️
+        OT
         </button>
 
       </div>
