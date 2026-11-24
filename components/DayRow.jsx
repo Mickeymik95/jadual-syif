@@ -122,7 +122,7 @@ export default function DayRow({
     <div
       className="
         grid
-        grid-cols-[88px_160px_33px_33px_33px]
+        grid-cols-[88px_1fr_33px_33px_33px]
         items-center
         gap-0.5
         h-[38px]
