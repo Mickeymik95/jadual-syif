@@ -436,7 +436,7 @@ export default function DayRow({
           onClick={() => onOpenOt(day)}
           className="
             flex
-            mb-1.5
+            mb-2.5
             h-[38px]
             w-full
             items-center
