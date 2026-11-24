@@ -63,42 +63,42 @@ export default function DayRow({
   function getDateBoxStyle() {
 
     if (shift === "DS") {
-      return "bg-yellow-600 border-yellow-200 text-slate-950";
+      return "bg-yellow-600 border-yellow-600 text-slate-950";
     }
 
     if (shift === "OD DS") {
-      return "bg-yellow-300 border-yellow-200 text-slate-950";
+      return "bg-yellow-300 border-yellow-300 text-slate-950";
     }
 
      if (shift === "NS") {
-      return "bg-neutral-700 border-slate-300 text-white";
+      return "bg-neutral-700 border-slate-700 text-white";
     }
 
     if (shift === "OD NS") {
-      return "bg-neutral-900 border-slate-300 text-white";
+      return "bg-neutral-900 border-slate-900 text-white";
     }
 
     if (shift === "PH DS") {
-      return "bg-purple-500 border-purple-200 text-white";
+      return "bg-purple-500 border-purple-500 text-white";
     }
 
     if (shift === "PH NS") {
-      return "bg-purple-900 border-purple-300 text-white";
+      return "bg-purple-900 border-purple-900 text-white";
     }
 
     if (shift === "CUTI/AL") {
-      return "bg-blue-500 border-blue-300 text-white";
+      return "bg-blue-500 border-blue-500 text-white";
     }
 
     if (shift === "MC") {
-      return "bg-red-600 border-red-300 text-white";
+      return "bg-red-600 border-red-600 text-white";
     }
 
     if (
       shift === "OFF" ||
       shift === "REST"
     ) {
-      return "bg-slate-400 border-slate-300 text-black";
+      return "bg-slate-400 border-slate-400 text-black";
     }
 
   }
@@ -128,7 +128,7 @@ export default function DayRow({
         border-b
         border-slate-800
         px-1
-        py-0.5
+        py-1
       "
     >
 
@@ -445,12 +445,12 @@ export default function DayRow({
             bg-blue-950
             text-[12px]
             font-black
-            text-white-200
+            text-green-400
             hover:bg-blue-800
           "
           title="OT Sambung"
         >
-         OT
+          🛠️
         </button>
 
       </div>
