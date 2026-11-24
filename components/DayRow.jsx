@@ -200,7 +200,7 @@ export default function DayRow({
           relative
           min-w-0
           h-[38px]
-          mb-2
+          mb-2.5
         "
       >
 
