@@ -430,10 +430,10 @@ export default function SalaryModal({
                     text-[10px]
                     font-black
                     uppercase
-                    text-yellow-500
+                    text-yellow-400
                   "
                 >
-                  OT NORMAL
+                  OT NORMAL (1.5)
                 </span>
 
                 <span
@@ -485,10 +485,10 @@ export default function SalaryModal({
                     text-[10px]
                     font-black
                     uppercase
-                    text-pink-600
+                    text-pink-400
                   "
                 >
-                  KERJA PH
+                  KERJA PH (2.0)
                 </span>
 
                 <span
@@ -538,10 +538,10 @@ export default function SalaryModal({
                     text-[10px]
                     font-black
                     uppercase
-                    text-pink-600
+                    text-pink-400
                   "
                 >
-                  OT PH
+                  OT PH (3.0)
                 </span>
 
                 <span
