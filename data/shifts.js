@@ -4,16 +4,16 @@ export const SHIFT_OPTIONS = [
     label: "PAGI",
   },
   {
+    value: "OD DS",
+    label: "KERJA OD PAGI",
+  },
+  {
     value: "NS",
     label: "MALAM",
   },
   {
-    value: "OD DS",
-    label: "OD PAGI",
-  },
-  {
     value: "OD NS",
-    label: "OD MALAM",
+    label: "KERJA OD MALAM",
   },
   {
     value: "OFF",
