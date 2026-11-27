@@ -253,7 +253,7 @@ export default function Header({
       className="
         rounded-md
         border
-        border-blue-800
+        border-slate-800
         bg-slate-950
         px-1.5
         py-0.5
